@@ -1,0 +1,181 @@
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- 🌍 SEOの最重要：ページタイトル -->
+  <title>Shinsei Export | Japanese Engines, Transmissions & Half Cuts Export</title>
+
+  <!-- 📄 Meta Description（Googleが一番読む説明文） -->
+  <meta name="description" content="Shinsei Export supplies high-quality Japanese engines, transmissions, half cuts, and auto parts. Based in Osaka, Japan. Order-based dismantling and container export for worldwide buyers.">
+
+  <!-- 🔑 SEOキーワード（軽く） -->
+  <meta name="keywords" content="Japanese engines export, Japan half cut export, Japanese auto parts, used engines Japan, Japanese transmissions, container loading Japan">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SNS用のOGタグ（拡散したときの表示が良くなる） -->
+  <meta property="og:title" content="Shinsei Export | Japanese Auto Parts Export">
+  <meta property="og:description" content="Exporting Japanese engines, transmissions, half cuts, and auto parts worldwide. Osaka-based dismantling & container loading.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shinseiexport.wixstudio.com/shinsei-trade">
+  <meta property="og:image" content="https://shinseiexport.wixstudio.com/shinsei-trade/hero.jpg">
+
+  <!-- JSON-LD：Googleに“何の会社か”を伝える強力なSEO武器 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Organization",
+    "name": "Shinsei Export",
+    "url": "https://shinseiexport.wixstudio.com/shinsei-trade",
+    "logo": "https://shinseiexport.wixstudio.com/logo.png",
+    "description": "Exporting high-quality Japanese engines, transmissions, half cuts, and automobile parts to worldwide buyers.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "JP"
+    },
+    "sameAs": []
+  }
+  </script>
+
+  <!-- 既存CSS -->
+  <?!= include('styles'); ?>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        SHINSEI EXPORT
+        <span class="logo-sub">Japanese Auto Parts Export</span>
+      </div>
+     <nav class="nav">
+  <a href="#hero">Top</a>
+  <a href="#about">About</a>
+  <a href="#supply">Supply System</a>
+  <a href="#categories">Parts</a>
+  <a href="#process">Process</a>
+  <a href="#strength">Why Us</a>
+  <a href="#destinations">Destinations</a>
+  <a href="#guidance">For Buyers</a> <!-- ★追加 -->
+  <a href="#contact" class="nav-cta">Contact</a>
+</nav>
+
+
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="section section--hero">
+      <?!= include('section_hero'); ?>
+    </section>
+
+    <section id="about" class="section">
+      <?!= include('section_about'); ?>
+    </section>
+
+    <section id="supply" class="section section--alt">
+      <?!= include('section_supply_system'); ?>
+    </section>
+
+    <section id="categories" class="section">
+      <?!= include('section_categories'); ?>
+    </section>
+
+    <section id="process" class="section section--alt">
+      <?!= include('section_process'); ?>
+    </section>
+
+    <section id="strength" class="section">
+      <?!= include('section_strength'); ?>
+    </section>
+
+    <section id="destinations" class="section section--alt">
+  <?!= include('section_destinations'); ?>
+</section>
+
+<section id="guidance" class="section section--alt">
+  <?!= include('guidance'); ?>
+</section>
+
+    <section id="contact" class="section section--contact">
+      <?!= include('section_contact'); ?>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+  <div class="container footer-inner">
+
+    <div class="footer-left">
+      <div>© <?= new Date().getFullYear(); ?> Shinsei Export / Shinsei Scrap</div>
+      <div class="footer-note">Japanese Used Auto Parts & Scrap Metal Export</div>
+    </div>
+
+    <div class="footer-right">
+      <a href="https://drive.google.com/file/d/1cIurm7ZJlEmCC69S5cdZGVsRgl_fvm-b/view?usp=sharing" 
+         target="_blank" 
+         class="footer-download-link">
+         📄 Download Trading Terms (PDF)
+      </a>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
+
+<script>
+function showLang(code) {
+  document.querySelectorAll('.lang-block').forEach(el => el.style.display = 'none');
+  document.getElementById('lang-' + code).style.display = 'block';
+
+  document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+document.getElementById("buyerForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  fetch("YOUR_GAS_WEBAPP_URL", {
+    method: "POST",
+    body: formData
+  })
+  .then(r => r.text())
+  .then(res => {
+    document.getElementById("formStatus").innerHTML =
+      "<span style='color:green;'>✔ Submitted successfully!</span>";
+    document.getElementById("buyerForm").reset();
+  })
+  .catch(err => {
+    document.getElementById("formStatus").innerHTML =
+      "<span style='color:red;'>❌ Submission failed.</span>";
+  });
+
+});
+
+document.getElementById("buyerForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  fetch("https://script.google.com/macros/s/AKfycbwGTK_3XTw6rRmoK1sneBwhlx_xtDxdkieOszdE--_NS-Vx-rn7K2JImZEZZSHqEe_b/exec", {
+    method: "POST",
+    body: formData
+  })
+  .then(r => r.text())
+  .then(res => {
+    document.getElementById("formStatus").innerHTML =
+      "<span style='color:green;'>✔ Submitted successfully!</span>";
+    document.getElementById("buyerForm").reset();
+  })
+  .catch(err => {
+    document.getElementById("formStatus").innerHTML =
+      "<span style='color:red;'>❌ Submission failed.</span>";
+  });
+
+});
+</script>
+
+
+
