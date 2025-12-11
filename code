@@ -1,0 +1,179 @@
+function doGet() {
+  return HtmlService.createTemplateFromFile('index')
+    .evaluate()
+    .setTitle('Shinsei Export | Japanese Auto Parts Export')
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename).getContent();
+}
+
+function doPost(e) {
+  try {
+    Logger.log("Received POST request");
+    Logger.log("e.postData: " + JSON.stringify(e.postData));
+    
+    if (!e.postData || !e.postData.contents) {
+      throw new Error("No POST data received");
+    }
+    
+    const data = JSON.parse(e.postData.contents);
+    Logger.log("Parsed data: " + JSON.stringify(data));
+    
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let sheet = ss.getSheetByName("APPLICATIONS");
+    
+    if (!sheet) {
+      sheet = ss.insertSheet("APPLICATIONS");
+      sheet.appendRow([
+        "Timestamp",
+        "Company Name",
+        "Address",
+        "Country",
+        "City",
+        "Zip",
+        "Website",
+        "Contact Person",
+        "Position",
+        "Email",
+        "Phone",
+        "Year Established",
+        "Employees",
+        "Preferred Language"
+      ]);
+      Logger.log("Created new APPLICATIONS sheet");
+    }
+    
+    const fullPhone = `${data.country_code || ''} ${data.phone_number || ''}`.trim();
+    
+    const row = [
+      new Date(),
+      data.company_name || '',
+      data.address || '',
+      data.country || '',
+      data.city || '',
+      data.zip || '',
+      data.website || '',
+      data.contact_person || '',
+      data.position || '',
+      data.email || '',
+      fullPhone,
+      data.year_established || '',
+      data.employees || '',
+      data.preferred_language || 'en'
+    ];
+    
+    sheet.appendRow(row);
+    Logger.log("Row appended successfully");
+    
+    try {
+      sendAutoReply(data);
+      Logger.log("Auto-reply email sent");
+    } catch (mailError) {
+      Logger.log("Email error: " + mailError.toString());
+    }
+    
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "success",
+      message: "Application submitted successfully"
+    })).setMimeType(ContentService.MimeType.JSON);
+    
+  } catch (err) {
+    Logger.log("Error in doPost: " + err.toString());
+    Logger.log("Stack trace: " + err.stack);
+    
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "error",
+      message: err.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function sendAutoReply(data) {
+  const email = data.email;
+  
+  if (!email) {
+    Logger.log("No email address provided, skipping auto-reply");
+    return;
+  }
+  
+  const name = data.contact_person || "Customer";
+  const lang = data.preferred_language || "en";
+  
+  const nowJST = Utilities.formatDate(new Date(), "Asia/Tokyo", "yyyy-MM-dd HH:mm");
+  
+  let subject = "";
+  let body = "";
+  
+  switch (lang) {
+    case "ar":
+      subject = "شكراً لتواصلك معنا - Shinsei Export";
+      body = `عزيزي ${name},
+
+شكرًا لتقديم نموذج الشراء الخاص بكم.
+وقت استلام الطلب (بتوقيت اليابان): ${nowJST}
+
+قد لا نتمكن من الرد عليكم فورًا، ولكن سنعود إليكم خلال بضعة أيام.
+
+مع أطيب التحيات،
+Shinsei Export`;
+      break;
+      
+    case "ru":
+      subject = "Спасибо за обращение - Shinsei Export";
+      body = `Уважаемый(ая) ${name},
+
+Спасибо за вашу заявку.
+Время получения (по японскому времени): ${nowJST}
+
+Мы можем ответить не сразу, но обязательно свяжемся с вами в течение нескольких дней.
+
+С уважением,
+Shinsei Export`;
+      break;
+      
+    case "pt":
+      subject = "Obrigado por entrar em contato - Shinsei Export";
+      body = `Olá ${name},
+
+Obrigado por enviar sua solicitação.
+Horário de recebimento (horário do Japão): ${nowJST}
+
+Talvez não possamos responder imediatamente, mas retornaremos dentro de alguns dias.
+
+Atenciosamente,
+Shinsei Export`;
+      break;
+      
+    default:
+      subject = "Thank you for contacting us - Shinsei Export";
+      body = `Dear ${name},
+
+Thank you very much for submitting your buyer application.
+Received at (Japan Time): ${nowJST}
+
+We may not be able to reply immediately, but we will get back to you within a few days.
+
+Best regards,
+Shinsei Export`;
+  }
+  
+  MailApp.sendEmail({
+    to: email,
+    subject: subject,
+    body: body,
+    htmlBody: body.replace(/\n/g, "<br>")
+  });
+}
+
+function testAutoReply() {
+  const testData = {
+    email: "your-email@example.com",
+    contact_person: "Test User",
+    preferred_language: "en"
+  };
+  
+  sendAutoReply(testData);
+  Logger.log("Test email sent successfully");
+}
