@@ -129,6 +129,14 @@
   }
   .img-slot span{max-width:16em;}
   .img-slot img{width:100%;height:100%;object-fit:cover;border-radius:8px;}
+  .img-slot:has(img){
+    border-style:solid;border-width:1px;border-color:var(--paper-2);
+    border-left:6px solid var(--blue);
+    background:var(--paper);
+    padding:14px;
+    box-shadow:0 2px 14px rgba(19,42,68,.06);
+    overflow:hidden;
+  }
   .hero .img-slot{min-height:280px;}
 
   /* ---------- SECTION generic ---------- */
@@ -338,21 +346,19 @@
   .faq-item .faq-a{padding:0 22px 20px 52px;font-size:.9rem;color:var(--ink-soft);}
 
   /* used cars */
-  .used-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:10px;}
-  .used-card{
-    background:var(--paper);border:1px solid var(--paper-2);border-radius:8px;overflow:hidden;color:var(--ink);
+  .used-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px;}
+  .used-link-btn{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--paper);border:1px solid var(--paper-2);border-left:6px solid var(--blue);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    font-weight:700;font-size:.95rem;color:var(--blue-deep);
+    text-decoration:none;
     box-shadow:0 2px 14px rgba(19,42,68,.05);
+    transition:background .15s ease, transform .15s ease;
   }
-  .used-thumb{
-    height:150px;
-    background:
-      repeating-linear-gradient(135deg, rgba(59,147,245,.14) 0 10px, transparent 10px 20px),
-      var(--navy-2);
-    display:flex;align-items:center;justify-content:center;
-  }
-  .used-thumb svg{width:56px;height:56px;color:var(--blue-deep);opacity:.85;}
-  .used-card .body{padding:18px;}
-  .used-card a.link{color:var(--blue-deep);font-weight:700;font-size:.88rem;text-decoration:underline;}
+  .used-link-btn:hover{background:var(--navy-2);transform:translateY(-1px);}
+  .used-link-btn svg{width:18px;height:18px;flex:none;}
 
   /* 営業日案内 */
   .hours-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;}
@@ -443,25 +449,10 @@
 
 <!-- HERO -->
 <header class="hero">
-  <div class="wrap">
-    <div>
-    <p class="eyebrow">SHINSEI SCRAP — CAR MAINTENANCE</p>
-    <h1>忙しくても、<br>愛車を<span class="accent">忘れない。</span></h1>
-    <p class="lead">オイル交換や車検、どこに頼めば安心か迷っていませんか。国家資格を持つ整備士が、あなたの愛車をLINEでしっかりサポートします。</p>
-    <div class="badge-row">
-      <span class="badge">国家資格の整備士が担当</span>
-      <span class="badge">友だち追加で作業工賃1,000円引き</span>
-    </div>
-    <a class="cta-line" href="https://lin.ee/suZz0dHn" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 3.4 2.32 6.36 5.72 7.86-.14.5-.9 3.1-.93 3.32 0 0-.02.16.08.22.1.06.22.02.22.02.3-.04 3.4-2.24 3.94-2.62.64.1 1.3.14 1.97.14 5.52 0 10-3.94 10-8.8S17.52 2 12 2z"/></svg>
-      まずはLINEで無料登録
+  <div class="wrap" style="display:flex;justify-content:center;">
+    <a href="https://lin.ee/suZz0dHn" target="_blank" rel="noopener" style="display:block;width:100%;">
+      <img src="https://static.wixstatic.com/media/622821_dcb2ddcaaa9b4d0684a84e5bd50308f8~mv2.png" alt="伸生スクラップ カーメンテナンス。忙しくても、愛車を忘れない。国家資格の整備士がLINEでサポート。友だち追加で作業工賃1,000円引き。まずはLINEで無料登録" style="width:100%;height:auto;display:block;border-radius:14px;box-shadow:0 24px 60px -24px rgba(19,42,68,.4);">
     </a>
-    <span class="cta-sub">友だち追加は30秒。しつこい営業連絡はしません。</span>
-    </div>
-    <!-- 画像を追加する場合: 下のdivを <img src="ファイル名.jpg" alt="説明"> に差し替えてください -->
-    <div class="img-slot">
-      <span>ここに写真を追加<br>（例: 整備士 / 愛車 / 店舗外観）<br>推奨サイズ 800×1000px</span>
-    </div>
   </div>
 </header>
 <div class="stripe-bar"></div>
@@ -469,9 +460,8 @@
 <!-- PROBLEM: cost -->
 <section>
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow" style="color:var(--red);">よくある後悔</p>
-      <h2>オイル交換を先延ばしにすると、<br>こんな出費に。</h2>
+    <div class="img-slot reveal" style="height:auto;margin-bottom:34px;">
+      <img src="https://static.wixstatic.com/media/622821_f9d96a71f0a44d9eb80883626f67aa6c~mv2.png" alt="オイル交換を先延ばしにすると、こんな出費に。エンジンオーバーホール費用30万円〜70万円" style="height:auto;object-fit:contain;border-radius:10px;">
     </div>
     <div class="cost-block">
       <div class="tag warn reveal">
@@ -492,9 +482,8 @@
 <!-- RISK: shaken -->
 <section class="dark">
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">見落としがちな期限</p>
-      <h2>車検切れで運転すると、<br>どうなるか知っていますか。</h2>
+    <div class="img-slot reveal" style="height:auto;margin-bottom:34px;">
+      <img src="https://static.wixstatic.com/media/622821_218cd3c1f6014c35bb96f79522effc02~mv2.png" alt="見落としがちな期限。車検切れで運転すると、どうなるか知っていますか。無車検運行のリスクと、およそ300台に1台が気づかず運転している実態" style="height:auto;object-fit:contain;border-radius:10px;">
     </div>
     <div class="risk-grid">
       <ul class="risk-list reveal">
@@ -542,41 +531,15 @@
 <!-- PRICE: shaken -->
 <section class="price-section">
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow" style="color:var(--blue-deep);">料金表 — 車検費用</p>
-      <h2>車両クラス別の目安料金</h2>
+    <div class="img-slot reveal" style="height:auto;margin-bottom:36px;">
+      <img src="https://static.wixstatic.com/media/622821_bd20c849634f48a39d8a333a2667eaa1~mv2.png" alt="料金表 — 車検費用。車両クラス別の目安料金。軽自動車34,690円〜、普通車〜1t 45,700円〜、1t〜1.5t 55,550円〜、1.5t〜2t 66,050円〜。LINE友だち登録で作業工賃1,000円引き" style="height:auto;object-fit:contain;border-radius:10px;">
     </div>
-    <div class="price-tabs reveal">
-      <div class="price-tag">
-        <h4>軽自動車</h4>
-        <div class="row"><span>法定費用</span><span>26,340円</span></div>
-        <div class="row"><span>作業工賃(1,000円引き)</span><span>8,350円</span></div>
-        <div class="total"><span>合計</span><span class="num">34,690円〜</span></div>
-      </div>
-      <div class="price-tag">
-        <h4>普通車 〜1t</h4>
-        <div class="row"><span>法定費用</span><span>36,250円</span></div>
-        <div class="row"><span>作業工賃(1,000円引き)</span><span>9,450円</span></div>
-        <div class="total"><span>合計</span><span class="num">45,700円〜</span></div>
-      </div>
-      <div class="price-tag">
-        <h4>1t〜1.5t</h4>
-        <div class="row"><span>法定費用</span><span>44,450円</span></div>
-        <div class="row"><span>作業工賃(1,000円引き)</span><span>11,100円</span></div>
-        <div class="total"><span>合計</span><span class="num">55,550円〜</span></div>
-      </div>
-      <div class="price-tag">
-        <h4>1.5t〜2t</h4>
-        <div class="row"><span>法定費用</span><span>52,750円</span></div>
-        <div class="row"><span>作業工賃(1,000円引き)</span><span>13,300円</span></div>
-        <div class="total"><span>合計</span><span class="num">66,050円〜</span></div>
-      </div>
-    </div>
-    <p class="price-note">法定費用＝重量税・自賠責・印紙代の合計。作業工賃はLINE友だち登録の1,000円引きクーポン適用後の金額です。</p>
+
+    <p style="margin-top:28px;margin-bottom:0;color:var(--ink-soft);font-size:.92rem;">車検とあわせて、オイル交換も明瞭価格でご案内しています。</p>
 
     <!-- 画像を追加する場合: 下のdivを <img src="ファイル名.jpg" alt="説明"> に差し替えてください -->
-    <div class="img-slot reveal" style="margin-top:36px;">
-      <span>ここに写真を追加（例: オイル交換作業のようす）</span>
+    <div class="img-slot reveal" style="margin-top:20px;min-height:0;height:auto;">
+      <img src="https://static.wixstatic.com/media/622821_d24aa14e1d94479bbcd35c8bd8f0caab~mv2.png" alt="オイル交換1リットル950円（工賃込み）LINE登録で更にお得に" style="height:auto;object-fit:contain;">
     </div>
     <div class="oil-cards reveal">
       <div class="oil-card">
@@ -601,9 +564,8 @@
 <!-- PARTS -->
 <section class="dark">
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">料金表 — 部品取り付け</p>
-      <h2>持ち込み・購入パーツの取り付け工賃</h2>
+    <div class="img-slot reveal" style="height:auto;margin-bottom:34px;">
+      <img src="https://static.wixstatic.com/media/622821_49fc91f2d389410ca15e0155824b3139~mv2.png" alt="部品取付工賃表。持込部品の取付もOK。電装品・外装灯火類の工賃一覧" style="height:auto;object-fit:contain;border-radius:10px;">
     </div>
     <div class="parts-grid reveal">
       <div class="part-chip"><span>ドアミラー(1個)</span><span class="p">3,000円〜</span></div>
@@ -634,9 +596,8 @@
 <!-- NOTIFY -->
 <section class="dark">
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">通知機能</p>
-      <h2>うっかり忘れを、LINEが防ぎます</h2>
+    <div class="img-slot reveal" style="height:auto;margin-bottom:34px;">
+      <img src="https://static.wixstatic.com/media/622821_e20a1c20d876479fa2b0a8cbcbee62c7~mv2.png" alt="通知機能。うっかり忘れをLINEが防ぎます。車検の時期・オイル交換時期を自動通知" style="height:auto;object-fit:contain;border-radius:10px;">
     </div>
     <div class="notify-grid reveal">
       <div class="notify-card">
@@ -687,15 +648,13 @@
 <!-- SCRAP BUYBACK -->
 <section>
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow" style="color:var(--blue-deep);">廃車買取</p>
-      <h2>廃車も、LINEで簡単査定</h2>
+    <div class="img-slot reveal" style="height:auto;margin-bottom:34px;">
+      <img src="https://static.wixstatic.com/media/622821_b72685228ef74ba7b1acc2605e5d0d7d~mv2.png" alt="廃車も、LINEで簡単査定。ご相談から買取までの流れと概算査定額の例" style="height:auto;object-fit:contain;border-radius:10px;">
     </div>
     <div class="order-card reveal" style="max-width:640px;">
       <h3>ご相談から買取までの流れ</h3>
       <ol class="step-grid">
-        <li>LINE内の回答フォームに答えるだけで簡易査定が完結します</li>
-        <li>査定金額をLINEでご案内します（査定後のしつこい営業はありません）</li>
+        <li>LINE内の回答フォームに答えると、その場で概算金額が案内されます（査定後のしつこい営業はありません）</li>
         <li>金額にご納得いただけたら店舗へお持ち込みください。その場で買取いたします</li>
       </ol>
       <p style="margin-top:18px;font-size:.82rem;color:var(--muted);">※買取は店舗へのお持ち込みに限ります（出張引き取りは行っておりません）</p>
@@ -717,28 +676,19 @@
 <!-- USED CARS -->
 <section>
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow" style="color:var(--blue-deep);">中古車販売</p>
-      <h2>中古車も絶賛販売中です</h2>
+    <div class="img-slot reveal" style="height:auto;margin-bottom:34px;">
+      <!-- 画像を追加する場合: 下のimgのsrcに、この画像を公開した先のURLを入れてください -->
+      <img src="https://static.wixstatic.com/media/622821_92f8de590a9d4e62ae23d366d49c1e2a~mv2.png" alt="中古車販売。中古車も絶賛販売中です。在庫車両ラインナップ・お探しの1台のご相談" style="height:auto;object-fit:contain;">
     </div>
     <div class="used-grid reveal">
-      <div class="used-card">
-        <!-- 画像を追加する場合: このdivの中身を <img src="ファイル名.jpg" alt="在庫車両"> に差し替えてください -->
-        <div class="used-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 13l1.5-4.5A2 2 0 0 1 6.4 7h11.2a2 2 0 0 1 1.9 1.5L21 13M3 13v4a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h12v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-4M3 13h18M7 17.5v-1M17 17.5v-1"/><circle cx="7" cy="14.5" r="1"/><circle cx="17" cy="14.5" r="1"/></svg></div>
-        <div class="body">
-          <h3 style="font-size:1rem;">在庫車両ラインナップ</h3>
-          <p style="font-size:.85rem;color:var(--muted);margin:8px 0 14px;">状態確認済みの中古車を随時ご案内しています。</p>
-          <a class="link" href="https://www.carsensor.net/shop/osaka/309380001/stocklist/?BKKN=AU4680785896&amp;BKKNTR=1" target="_blank" rel="noopener">在庫一覧を見る（Carsensor）</a>
-        </div>
-      </div>
-      <div class="used-card">
-        <div class="used-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H4z"/><path d="M4 16l4-5 3 3 4-6 5 8"/></svg></div>
-        <div class="body">
-          <h3 style="font-size:1rem;">お探しの1台のご相談</h3>
-          <p style="font-size:.85rem;color:var(--muted);margin:8px 0 14px;">条件に近い車両探しもLINEでご相談いただけます。</p>
-          <a class="link" href="https://lin.ee/suZz0dHn" target="_blank" rel="noopener">LINEで相談する</a>
-        </div>
-      </div>
+      <a class="used-link-btn" href="https://www.carsensor.net/shop/osaka/309380001/stocklist/?BKKN=AU4680785896&amp;BKKNTR=1" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13l1.5-4.5A2 2 0 0 1 6.4 7h11.2a2 2 0 0 1 1.9 1.5L21 13M3 13v4a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h12v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-4M3 13h18M7 17.5v-1M17 17.5v-1"/><circle cx="7" cy="14.5" r="1"/><circle cx="17" cy="14.5" r="1"/></svg>
+        在庫一覧を見る（Carsensor）
+      </a>
+      <a class="used-link-btn" href="https://lin.ee/suZz0dHn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 3.4 2.32 6.36 5.72 7.86-.14.5-.9 3.1-.93 3.32 0 0-.02.16.08.22.1.06.22.02.22.02.3-.04 3.4-2.24 3.94-2.62.64.1 1.3.14 1.97.14 5.52 0 10-3.94 10-8.8S17.52 2 12 2z"/></svg>
+        LINEで相談する
+      </a>
     </div>
   </div>
 </section>
@@ -761,7 +711,7 @@
       </details>
       <details class="faq-item">
         <summary><span><span class="q-mark">Q.</span>廃車買取は出張査定・引き取りもしてもらえますか？</span><span class="icon">+</span></summary>
-        <p class="faq-a">LINE内の回答フォームに答えていただくだけで、LINEの中で簡易査定が完結します。査定後にしつこい営業のご連絡をすることは一切ありません。金額にご納得いただけた場合のみ、店舗へお持ち込みください（出張引き取りは行っておりません）。</p>
+        <p class="faq-a">LINE内の回答フォームに答えていただくと、その場で概算金額が案内されます。査定後にしつこい営業のご連絡をすることは一切ありません。金額にご納得いただけた場合のみ、店舗へお持ち込みください（出張引き取りは行っておりません）。</p>
       </details>
       <details class="faq-item">
         <summary><span><span class="q-mark">Q.</span>友だち登録の1,000円引きクーポンはどのサービスに使えますか？</span><span class="icon">+</span></summary>
