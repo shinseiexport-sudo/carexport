@@ -418,10 +418,15 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
 /* photo band + gallery */
 .shband{margin:0;background:var(--navy-900);line-height:0}
 .shband img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.shband--hero{position:relative;max-width:1440px;margin-left:auto;margin-right:auto}
+.shband--hero img{filter:contrast(1.05) saturate(1.04)}
+.shband--hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(3,14,32,.22) 0%,rgba(3,14,32,0) 32%,rgba(3,14,32,0) 58%,rgba(3,14,32,.32) 100%)}
 .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.2vw,1rem);margin-top:clamp(1.6rem,3vw,2.4rem)}
 .shots figure{margin:0;border:1px solid var(--line);background:#fff;overflow:hidden}
 .shots img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 @media (max-width:900px){ .shots{grid-template-columns:1fr} }
+.form__msg.is-ok{color:#0B7A45}
 </style>
 </head>
 <body>
@@ -489,7 +494,6 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
   var form=document.getElementById('buyerForm');
   if(form){
     form.addEventListener('submit',function(e){
-      if(form.getAttribute('action').indexOf('REPLACE_FORM_ID')===-1) return;
       e.preventDefault();
       var missing=[];
       form.querySelectorAll('[data-req="1"]').forEach(function(el){
@@ -498,10 +502,32 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
       var ag=document.getElementById('agree');
       if(ag && !ag.checked) missing.push(form.getAttribute('data-agree'));
       var msg=document.getElementById('formMsg');
-      msg.textContent = missing.length
-        ? form.getAttribute('data-msg-missing').replace('{fields}', missing.join(', '))
-        : form.getAttribute('data-msg-ok');
-      msg.classList.add('is-on');
+      var btn=form.querySelector('button[type="submit"]');
+      if(missing.length){
+        msg.textContent=form.getAttribute('data-msg-missing').replace('{fields}', missing.join(', '));
+        msg.classList.add('is-on'); msg.classList.remove('is-ok');
+        return;
+      }
+      msg.textContent=form.getAttribute('data-msg-sending');
+      msg.classList.add('is-on'); msg.classList.remove('is-ok');
+      if(btn) btn.disabled=true;
+      fetch(form.getAttribute('action'),{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+        .then(function(r){return r.json();})
+        .then(function(j){
+          if(j&&j.success){
+            form.reset();
+            msg.textContent=form.getAttribute('data-msg-ok');
+            msg.classList.add('is-on','is-ok');
+          }else{
+            msg.textContent=form.getAttribute('data-msg-error');
+            msg.classList.add('is-on');
+          }
+        })
+        .catch(function(){
+          msg.textContent=form.getAttribute('data-msg-error');
+          msg.classList.add('is-on');
+        })
+        .finally(function(){ if(btn) btn.disabled=false; });
     });
   }
 

@@ -382,8 +382,13 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
 /* photo band + gallery */
 .shband{margin:0;background:var(--navy-900);line-height:0}
 .shband img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.shband--hero{position:relative;max-width:1440px;margin-left:auto;margin-right:auto}
+.shband--hero img{filter:contrast(1.05) saturate(1.04)}
+.shband--hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(3,14,32,.22) 0%,rgba(3,14,32,0) 32%,rgba(3,14,32,0) 58%,rgba(3,14,32,.32) 100%)}
 .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.2vw,1rem);margin-top:clamp(1.6rem,3vw,2.4rem)}
 .shots figure{margin:0;border:1px solid var(--line);background:#fff;overflow:hidden}
 .shots img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 @media (max-width:900px){ .shots{grid-template-columns:1fr} }
+.form__msg.is-ok{color:#0B7A45}
 """

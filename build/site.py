@@ -59,7 +59,6 @@ JS = """
   var form=document.getElementById('buyerForm');
   if(form){
     form.addEventListener('submit',function(e){
-      if(form.getAttribute('action').indexOf('REPLACE_FORM_ID')===-1) return;
       e.preventDefault();
       var missing=[];
       form.querySelectorAll('[data-req="1"]').forEach(function(el){
@@ -68,10 +67,32 @@ JS = """
       var ag=document.getElementById('agree');
       if(ag && !ag.checked) missing.push(form.getAttribute('data-agree'));
       var msg=document.getElementById('formMsg');
-      msg.textContent = missing.length
-        ? form.getAttribute('data-msg-missing').replace('{fields}', missing.join(', '))
-        : form.getAttribute('data-msg-ok');
-      msg.classList.add('is-on');
+      var btn=form.querySelector('button[type="submit"]');
+      if(missing.length){
+        msg.textContent=form.getAttribute('data-msg-missing').replace('{fields}', missing.join(', '));
+        msg.classList.add('is-on'); msg.classList.remove('is-ok');
+        return;
+      }
+      msg.textContent=form.getAttribute('data-msg-sending');
+      msg.classList.add('is-on'); msg.classList.remove('is-ok');
+      if(btn) btn.disabled=true;
+      fetch(form.getAttribute('action'),{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+        .then(function(r){return r.json();})
+        .then(function(j){
+          if(j&&j.success){
+            form.reset();
+            msg.textContent=form.getAttribute('data-msg-ok');
+            msg.classList.add('is-on','is-ok');
+          }else{
+            msg.textContent=form.getAttribute('data-msg-error');
+            msg.classList.add('is-on');
+          }
+        })
+        .catch(function(){
+          msg.textContent=form.getAttribute('data-msg-error');
+          msg.classList.add('is-on');
+        })
+        .finally(function(){ if(btn) btn.disabled=false; });
     });
   }
 
@@ -305,7 +326,7 @@ def tpl_top(P):
 
     pre = "" if P["code"] == "en" else "../"
     A = IMG_ALT[P["code"]]
-    band = ('<section class="shband"><img src="%simg/hero-factory-1440.jpg" width="1440" height="810" '
+    band = ('<section class="shband shband--hero"><img src="%simg/hero-factory-1440.jpg" width="1440" height="810" '
             'alt="%s" decoding="async" fetchpriority="high"></section>' % (pre, esc_attr(A["band"])))
     shots = ('<div class="shots rv">'
              '<figure><img src="%simg/engine-900.jpg" width="900" height="675" alt="%s" decoding="async"></figure>'
@@ -525,8 +546,12 @@ def tpl_contact(P):
     <div class="contact__grid">
       <div class="note rv"><p class="note__h">%s</p><ul>%s</ul>
         <div class="mailbox"><span class="mailbox__lab">%s</span><a href="mailto:%s">%s</a></div></div>
-      <form class="f-grid rv" id="buyerForm" action="https://formspree.io/f/REPLACE_FORM_ID" method="POST" novalidate
-            data-agree="%s" data-msg-missing="%s" data-msg-ok="%s">
+      <form class="f-grid rv" id="buyerForm" action="https://api.web3forms.com/submit" method="POST" novalidate
+            data-agree="%s" data-msg-missing="%s" data-msg-ok="%s" data-msg-sending="%s" data-msg-error="%s">
+        <input type="hidden" name="access_key" value="ab948f0c-bad5-4e53-91c0-ab2c894c9dd5">
+        <input type="hidden" name="subject" value="Shinsei Export - Buyer application form">
+        <input type="hidden" name="from_name" value="Shinsei Export website">
+        <input type="hidden" name="botcheck" value="">
         <p class="form__title" style="grid-column:1/-1">%s</p>
         %s
         <label class="f-check f--full" for="agree"><input id="agree" name="agree" type="checkbox" required>
@@ -539,7 +564,7 @@ def tpl_contact(P):
       </form>
     </div>
   </div>
-</section>""" % (d["note_h"], notes, d["email_label"], P["email"], P["email"], d["data_agree"], d["msg_missing"], d["msg_ok"], d["form_title"],
+</section>""" % (d["note_h"], notes, d["email_label"], P["email"], P["email"], d["data_agree"], d["msg_missing"], d["msg_ok"], d["msg_sending"], d["msg_error"], d["form_title"],
                  "".join(fields), d["agree"], d["btn"], d["foot_note"], d["email_label"], P["email"], P["email"])
     return d["title"], d["desc"], body
 

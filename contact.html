@@ -417,10 +417,15 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
 /* photo band + gallery */
 .shband{margin:0;background:var(--navy-900);line-height:0}
 .shband img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.shband--hero{position:relative;max-width:1440px;margin-left:auto;margin-right:auto}
+.shband--hero img{filter:contrast(1.05) saturate(1.04)}
+.shband--hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(3,14,32,.22) 0%,rgba(3,14,32,0) 32%,rgba(3,14,32,0) 58%,rgba(3,14,32,.32) 100%)}
 .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.2vw,1rem);margin-top:clamp(1.6rem,3vw,2.4rem)}
 .shots figure{margin:0;border:1px solid var(--line);background:#fff;overflow:hidden}
 .shots img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 @media (max-width:900px){ .shots{grid-template-columns:1fr} }
+.form__msg.is-ok{color:#0B7A45}
 </style>
 </head>
 <body>
@@ -454,8 +459,12 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
     <div class="contact__grid">
       <div class="note rv"><p class="note__h">Before you submit</p><ul><li>Please read our <a href="https://drive.google.com/file/d/1cIurm7ZJlEmCC69S5cdZGVsRgl_fvm-b/view?usp=sharing" target="_blank" rel="noopener">Trading Terms &amp; Conditions</a> before filling out the Application Form.</li><li>You do not need to complete every field, but insufficient information may delay or prevent approval.</li><li>All information must be entered in English.</li></ul>
         <div class="mailbox"><span class="mailbox__lab">Email</span><a href="mailto:ex@shinsei-ltd.co.jp">ex@shinsei-ltd.co.jp</a></div></div>
-      <form class="f-grid rv" id="buyerForm" action="https://formspree.io/f/REPLACE_FORM_ID" method="POST" novalidate
-            data-agree="Trading Terms &amp; Conditions agreement" data-msg-missing="Please complete: {fields}. This form is not yet connected to a mail service." data-msg-ok="Your details are ready, but this form is not connected to a mail service yet. Set your form endpoint in this page (action="https://formspree.io/f/...") to receive submissions.">
+      <form class="f-grid rv" id="buyerForm" action="https://api.web3forms.com/submit" method="POST" novalidate
+            data-agree="Trading Terms &amp; Conditions agreement" data-msg-missing="Please complete: {fields}." data-msg-ok="Thank you. Your application has been sent. Our team will reply to you shortly." data-msg-sending="Sending your application…" data-msg-error="Sorry, your application could not be sent. Please try again, or email us at ex@shinsei-ltd.co.jp.">
+        <input type="hidden" name="access_key" value="ab948f0c-bad5-4e53-91c0-ab2c894c9dd5">
+        <input type="hidden" name="subject" value="Shinsei Export - Buyer application form">
+        <input type="hidden" name="from_name" value="Shinsei Export website">
+        <input type="hidden" name="botcheck" value="">
         <p class="form__title" style="grid-column:1/-1">Contact us</p>
         <div class="f f--full"><label for="company">Company Name</label><input id="company" name="company" type="text" autocomplete="organization" data-label="Company Name"></div><div class="f"><label for="first">First name<i>*</i></label><input id="first" name="first" type="text" autocomplete="given-name" data-req="1" required data-label="First name"></div><div class="f"><label for="last">Last name</label><input id="last" name="last" type="text" autocomplete="family-name" data-label="Last name"></div><div class="f"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" data-label="Phone"></div><div class="f"><label for="email">Email<i>*</i></label><input id="email" name="email" type="email" autocomplete="email" data-req="1" required data-label="Email"></div><div class="f f--full"><label for="message">Message<i>*</i></label><textarea id="message" name="message" required data-req="1" data-label="Message"></textarea></div>
         <label class="f-check f--full" for="agree"><input id="agree" name="agree" type="checkbox" required>
@@ -505,7 +514,6 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
   var form=document.getElementById('buyerForm');
   if(form){
     form.addEventListener('submit',function(e){
-      if(form.getAttribute('action').indexOf('REPLACE_FORM_ID')===-1) return;
       e.preventDefault();
       var missing=[];
       form.querySelectorAll('[data-req="1"]').forEach(function(el){
@@ -514,10 +522,32 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
       var ag=document.getElementById('agree');
       if(ag && !ag.checked) missing.push(form.getAttribute('data-agree'));
       var msg=document.getElementById('formMsg');
-      msg.textContent = missing.length
-        ? form.getAttribute('data-msg-missing').replace('{fields}', missing.join(', '))
-        : form.getAttribute('data-msg-ok');
-      msg.classList.add('is-on');
+      var btn=form.querySelector('button[type="submit"]');
+      if(missing.length){
+        msg.textContent=form.getAttribute('data-msg-missing').replace('{fields}', missing.join(', '));
+        msg.classList.add('is-on'); msg.classList.remove('is-ok');
+        return;
+      }
+      msg.textContent=form.getAttribute('data-msg-sending');
+      msg.classList.add('is-on'); msg.classList.remove('is-ok');
+      if(btn) btn.disabled=true;
+      fetch(form.getAttribute('action'),{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+        .then(function(r){return r.json();})
+        .then(function(j){
+          if(j&&j.success){
+            form.reset();
+            msg.textContent=form.getAttribute('data-msg-ok');
+            msg.classList.add('is-on','is-ok');
+          }else{
+            msg.textContent=form.getAttribute('data-msg-error');
+            msg.classList.add('is-on');
+          }
+        })
+        .catch(function(){
+          msg.textContent=form.getAttribute('data-msg-error');
+          msg.classList.add('is-on');
+        })
+        .finally(function(){ if(btn) btn.disabled=false; });
     });
   }
 
