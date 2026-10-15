@@ -140,7 +140,7 @@ p{margin:0 0 1.05em} p:last-child{margin-bottom:0}
 .hero{position:relative;background:var(--navy-900);color:var(--bright);overflow:hidden}
 .hero__glow{position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(700px 440px at 90% 4%,rgba(242,107,33,.2),transparent 66%),radial-gradient(620px 500px at 4% 94%,rgba(30,84,132,.5),transparent 70%)}
-.hero__in{position:relative;z-index:2;padding-top:clamp(3rem,6.5vw,5.5rem)}
+.hero__in{position:relative;z-index:2;padding-top:clamp(1.6rem,3.2vw,2.6rem)}
 .hero .h1{color:var(--bright)}
 .tag{display:inline-flex;align-items:center;gap:.65em;font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.2em;
   text-transform:uppercase;color:var(--accent-l);border:1px solid rgba(242,107,33,.45);padding:.55em .95em;margin-bottom:1.6rem}
@@ -344,8 +344,8 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
   .band__in{grid-template-columns:1fr}
 }
 @media (max-width:900px){
-  .top__photo::after{background:linear-gradient(180deg,rgba(0,40,110,.84) 0%,rgba(0,48,128,.90) 52%,rgba(0,58,155,.95) 100%)}
-  .hero,.phead{min-height:0}
+  .top__photo::after{background:linear-gradient(180deg,rgba(0,44,120,.60) 0%,rgba(0,50,132,.52) 52%,rgba(0,40,108,.64) 100%)}
+  .hero__banner,.phead{min-height:0}
   .hero__grid{grid-template-columns:1fr}
   .stamp{justify-self:start;width:150px;height:150px;margin-top:1.5rem}
   .stamp b{font-size:1.9rem}
@@ -423,15 +423,17 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
 .shband::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(3,14,32,.22) 0%,rgba(3,14,32,0) 32%,rgba(3,14,32,0) 58%,rgba(3,14,32,.32) 100%)}
 
-/* unified page opening — crane photo backdrop, same height on every page */
-.top__photo{position:absolute;inset:0;z-index:0;background-repeat:no-repeat;background-size:cover;background-position:center 40%;
-  filter:saturate(1.55) contrast(1.07) brightness(1.08)}
+/* unified page opening — photo backdrop, one size on every page */
+.top__photo{position:absolute;inset:0;z-index:0;background-repeat:no-repeat;background-size:cover;background-position:center 42%;
+  filter:saturate(1.28) contrast(1.05) brightness(1.03)}
 .top__photo::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(0,52,140,.94) 0%,rgba(0,58,155,.89) 46%,rgba(0,69,181,.44) 74%,rgba(0,69,181,.16) 100%),
-             linear-gradient(180deg,rgba(0,28,78,.28) 0%,rgba(0,28,78,0) 46%,rgba(0,28,78,.30) 100%)}
-.hero,.phead{min-height:clamp(400px,52vw,620px)}
-.phead{display:flex;align-items:center}
-.phead__in{width:100%}
+  background:linear-gradient(180deg,rgba(0,52,140,.50) 0%,rgba(0,58,155,.40) 46%,rgba(0,42,112,.56) 100%)}
+.hero__banner{position:relative;z-index:2;min-height:clamp(360px,42vw,500px);display:flex;flex-direction:column;
+  justify-content:center;align-items:flex-start;padding-block:clamp(1.6rem,3vw,2.6rem)}
+.hero__banner > .tag,.hero__banner > .h1{position:relative;z-index:1}
+.phead{position:relative;z-index:2;min-height:clamp(360px,42vw,500px);display:flex;flex-direction:column;justify-content:center}
+.phead__in{width:100%;padding-block:clamp(1.6rem,3vw,2.4rem)}
+.hero__banner,.phead__in{text-shadow:0 2px 16px rgba(0,18,50,.78),0 1px 3px rgba(0,18,50,.66)}
 .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.2vw,1rem);margin-top:clamp(1.6rem,3vw,2.4rem)}
 .shots figure{margin:0;border:1px solid var(--line);background:#fff;overflow:hidden}
 .shots img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
@@ -460,13 +462,15 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
 
 <main>
 <section class="hero grain">
-<div class="top__photo" aria-hidden="true" style="background-image:url(img/crane-1920.jpg)"></div>
   <div class="hero__glow"></div>
-  <div class="wrap hero__in">
+  <div class="wrap hero__banner">
+<div class="top__photo" aria-hidden="true" style="background-image:url(img/crane-1920.jpg)"></div>
     <span class="tag">Direct Export from Japan</span>
+    <h1 class="h1">Japanese Engines, Transmissions &amp; <em>Half Cuts</em> <span class="out">Exported Worldwide.</span></h1>
+  </div>
+  <div class="wrap hero__in">
     <div class="hero__grid">
       <div>
-        <h1 class="h1">Japanese Engines, Transmissions &amp; <em>Half Cuts</em> <span class="out">Exported Worldwide.</span></h1>
         <div class="hero__body"><p>We purchase vehicles directly from Japanese auto auctions, dismantle them, and safely load high-quality engines, transmissions, and half cuts into containers for export to your country.</p><p>Based in Osaka, Japan — supplying Japanese engines (G / D), transmissions, half cuts, and body parts to workshops, mechanics, and wholesalers worldwide.</p></div>
         <div class="hero__cta">
           <a class="btn btn--pri" href="contact.html">Contact for Orders <span aria-hidden="true">&rarr;</span></a>
@@ -478,7 +482,7 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
     <div class="strip"><div class="strip__c"><span class="strip__lab">Supply Style</span><p class="strip__val">Order-<em>Based</em></p><p>We buy vehicles based on your requested models.</p><ul><li>We do not keep large stock due to high auction prices in Japan</li><li>Instead, we buy only the necessary vehicles for your order.</li><li>This keeps the cost transparent and ensures stable supply.</li></ul></div><div class="strip__c"><span class="strip__lab">Order-Based Supply System</span><p class="strip__val">Auction &rarr; Dismantling &rarr; <em>Export</em></p><p>Tell us the models or parts you need — we will source, dismantle, and load them into a container.</p><a class="link-m" href="detail.html">View Dismantling List <span>&rarr;</span></a></div><div class="strip__c strip__main"><span class="strip__lab">Main Items</span><p class="strip__val">ENG / T/M / <em>Half Cut</em></p><p>Body parts also available on request.</p></div></div>
   </div>
 </section>
-<section class="shband"><img src="img/hero-factory-1440.jpg" width="1440" height="810" alt="A container ship and gantry cranes at a Japanese export port, with stacked containers on the quay" decoding="async" fetchpriority="high"></section>
+
 <section class="sect">
   <div class="wrap">
     <div class="sh rv"><div class="sh__l"><p class="eyebrow"><span class="code">00</span> Sections</p>

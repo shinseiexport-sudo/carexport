@@ -13,14 +13,14 @@ IMG_ALT = {
         "engine": "A used engine and transmission set placed on a work mat in our yard",
         "container": "An export container loaded with used car doors and body parts, secured with belts",
         "loading": "Used engines and transmissions loaded on a truck bed for transport",
-        "port": "Used engines and transmissions loaded on a truck bed at our yard",
+        "port": "The view from the bridge of a container ship at sea, with containers stacked on deck",
     },
     "ja": {
         "band": "日本の輸出港に着岸したコンテナ船とガントリークレーン、岸壁に並ぶコンテナ",
         "engine": "ヤードのマットの上に置かれた中古エンジンとトランスミッションのセット",
         "container": "中古のドアやボディパーツをベルトで固定して積み込んだ輸出コンテナ",
         "loading": "運搬のためトラックの荷台に積み込まれた中古エンジンとトランスミッション",
-        "port": "ヤードでトラックの荷台に積み込まれた中古エンジンとトランスミッション",
+        "port": "海上を航行するコンテナ船の船橋から見た、甲板に積まれたコンテナ",
     },
 }
 
@@ -326,8 +326,7 @@ def tpl_top(P):
 
     pre = "" if P["code"] == "en" else "../"
     A = IMG_ALT[P["code"]]
-    band = ('<section class="shband"><img src="%simg/hero-factory-1440.jpg" width="1440" height="810" '
-            'alt="%s" decoding="async" fetchpriority="high"></section>' % (pre, esc_attr(A["band"])))
+    band = ""
     shots = ('<div class="shots rv">'
              '<figure><img src="%simg/engine-900.jpg" width="900" height="675" alt="%s" decoding="async"></figure>'
              '<figure><img src="%simg/container-900.jpg" width="900" height="675" alt="%s" decoding="async"></figure>'
@@ -336,11 +335,13 @@ def tpl_top(P):
 
     return """<section class="hero grain">
   <div class="hero__glow"></div>
-  <div class="wrap hero__in">
+  <div class="wrap hero__banner">
     <span class="tag">%s</span>
+    <h1 class="h1">%s</h1>
+  </div>
+  <div class="wrap hero__in">
     <div class="hero__grid">
       <div>
-        <h1 class="h1">%s</h1>
         <div class="hero__body"><p>%s</p><p>%s</p></div>
         <div class="hero__cta">
           <a class="btn btn--pri" href="%s">%s <span aria-hidden="true">&rarr;</span></a>
@@ -419,8 +420,8 @@ def tpl_supply(P):
     body = phead_html(P, "supply", d) + """
 <section class="sect">
   <div class="wrap">
-    <div class="sh sh--tight sh--one rv"><div class="sh__l"><h2 class="h2">%s</h2></div></div>
-    <div class="about__copy rv" style="max-width:74ch">%s</div>
+    <div class="sh rv"><div class="sh__l" style="max-width:none"><h2 class="h2">%s</h2></div>
+      <div class="about__copy">%s</div></div>
     <div class="steps rv" style="margin-top:clamp(1.8rem,4vw,3rem)">%s</div>
     <div class="brands rv"><p class="brands__h">%s</p><div class="chipset">%s</div></div>
   </div>
@@ -500,7 +501,7 @@ def tpl_dest(P):
         btns.append('<button type="button" data-region="%s" aria-pressed="false">%s</button>'
                     % (esc_attr(rlab), rlab))
     data = json.dumps(pts, ensure_ascii=False).replace("&", "&amp;")
-    band = ('<section class="shband"><img src="%simg/port-1440.jpg" width="1440" height="810" '
+    band = ('<section class="shband"><img src="%simg/shipdeck-1440.jpg" width="1440" height="810" '
             'alt="%s" decoding="async"></section>'
             % (("" if P["code"] == "en" else "../"), esc_attr(IMG_ALT[P["code"]]["port"])))
     body = phead_html(P, "dest", d) + """
@@ -718,15 +719,8 @@ def write_extras():
         "User-agent: *\nAllow: /\n\nSitemap: %ssitemap.xml\n" % base)
 
 
-BAND_BY_KEY = {
-    "about":   ("hero-factory-1440.jpg", "container"),
-    "supply":  ("port-1440.jpg", "loading"),
-    "detail":  ("band-c-1440.jpg", "engine"),
-    "parts":   ("hero-factory-1440.jpg", "container"),
-    "process": ("port-1440.jpg", "loading"),
-    "why":     ("band-c-1440.jpg", "engine"),
-    "contact": ("port-1440.jpg", "loading"),
-}
+# (3) crane/skyscraper bands removed everywhere; (6) no photo bands on these pages
+BAND_BY_KEY = {}
 
 
 def build():
@@ -746,8 +740,8 @@ def build():
             photo = ('<div class="top__photo" aria-hidden="true" '
                      'style="background-image:url(%simg/crane-1920.jpg)"></div>'
                      % ("" if P["code"] == "en" else "../"))
-            body = body.replace('<section class="hero grain">',
-                                '<section class="hero grain">\n' + photo, 1)
+            body = body.replace('<div class="wrap hero__banner">',
+                                '<div class="wrap hero__banner">\n' + photo, 1)
             body = body.replace('<section class="phead grain">',
                                 '<section class="phead grain">\n' + photo, 1)
             if k != "top" and k in BAND_BY_KEY:

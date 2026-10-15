@@ -140,7 +140,7 @@ p{margin:0 0 1.05em} p:last-child{margin-bottom:0}
 .hero{position:relative;background:var(--navy-900);color:var(--bright);overflow:hidden}
 .hero__glow{position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(700px 440px at 90% 4%,rgba(242,107,33,.2),transparent 66%),radial-gradient(620px 500px at 4% 94%,rgba(30,84,132,.5),transparent 70%)}
-.hero__in{position:relative;z-index:2;padding-top:clamp(3rem,6.5vw,5.5rem)}
+.hero__in{position:relative;z-index:2;padding-top:clamp(1.6rem,3.2vw,2.6rem)}
 .hero .h1{color:var(--bright)}
 .tag{display:inline-flex;align-items:center;gap:.65em;font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.2em;
   text-transform:uppercase;color:var(--accent-l);border:1px solid rgba(242,107,33,.45);padding:.55em .95em;margin-bottom:1.6rem}
@@ -344,8 +344,8 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
   .band__in{grid-template-columns:1fr}
 }
 @media (max-width:900px){
-  .top__photo::after{background:linear-gradient(180deg,rgba(0,40,110,.84) 0%,rgba(0,48,128,.90) 52%,rgba(0,58,155,.95) 100%)}
-  .hero,.phead{min-height:0}
+  .top__photo::after{background:linear-gradient(180deg,rgba(0,44,120,.60) 0%,rgba(0,50,132,.52) 52%,rgba(0,40,108,.64) 100%)}
+  .hero__banner,.phead{min-height:0}
   .hero__grid{grid-template-columns:1fr}
   .stamp{justify-self:start;width:150px;height:150px;margin-top:1.5rem}
   .stamp b{font-size:1.9rem}
@@ -423,15 +423,17 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
 .shband::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(3,14,32,.22) 0%,rgba(3,14,32,0) 32%,rgba(3,14,32,0) 58%,rgba(3,14,32,.32) 100%)}
 
-/* unified page opening — crane photo backdrop, same height on every page */
-.top__photo{position:absolute;inset:0;z-index:0;background-repeat:no-repeat;background-size:cover;background-position:center 40%;
-  filter:saturate(1.55) contrast(1.07) brightness(1.08)}
+/* unified page opening — photo backdrop, one size on every page */
+.top__photo{position:absolute;inset:0;z-index:0;background-repeat:no-repeat;background-size:cover;background-position:center 42%;
+  filter:saturate(1.28) contrast(1.05) brightness(1.03)}
 .top__photo::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(0,52,140,.94) 0%,rgba(0,58,155,.89) 46%,rgba(0,69,181,.44) 74%,rgba(0,69,181,.16) 100%),
-             linear-gradient(180deg,rgba(0,28,78,.28) 0%,rgba(0,28,78,0) 46%,rgba(0,28,78,.30) 100%)}
-.hero,.phead{min-height:clamp(400px,52vw,620px)}
-.phead{display:flex;align-items:center}
-.phead__in{width:100%}
+  background:linear-gradient(180deg,rgba(0,52,140,.50) 0%,rgba(0,58,155,.40) 46%,rgba(0,42,112,.56) 100%)}
+.hero__banner{position:relative;z-index:2;min-height:clamp(360px,42vw,500px);display:flex;flex-direction:column;
+  justify-content:center;align-items:flex-start;padding-block:clamp(1.6rem,3vw,2.6rem)}
+.hero__banner > .tag,.hero__banner > .h1{position:relative;z-index:1}
+.phead{position:relative;z-index:2;min-height:clamp(360px,42vw,500px);display:flex;flex-direction:column;justify-content:center}
+.phead__in{width:100%;padding-block:clamp(1.6rem,3vw,2.4rem)}
+.hero__banner,.phead__in{text-shadow:0 2px 16px rgba(0,18,50,.78),0 1px 3px rgba(0,18,50,.66)}
 .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.2vw,1rem);margin-top:clamp(1.6rem,3vw,2.4rem)}
 .shots figure{margin:0;border:1px solid var(--line);background:#fff;overflow:hidden}
 .shots img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
@@ -468,7 +470,7 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
   </div></section>
 <section class="sect">
   <div class="wrap"><div class="why rv"><div class="why__c"><h3><span>強み 01</span>正確な車両選定</h3><p>ご指定のモデルに基づいてのみ車両を購入します。場当たり的な在庫や品質のばらつきはありません。すべてはお客様のご注文から始まります。だからこそ、エンジン、トランスミッション、部品を毎回正確にお届けできます。</p></div><div class="why__c"><h3><span>強み 02</span>確かな分解技術</h3><p>分解はすべて経験を積んだスタッフが行います。エンジンとトランスミッションは丁寧に扱い、ボディパーツは輸出品質を保てるよう、損傷を最小限に抑えて取り外します。</p></div><div class="why__c"><h3><span>強み 03</span>安全で整理されたコンテナ積み込み</h3><p>部品はモデル別・品目別に仕分けします。エンジンとT/Mユニットは確実に固定し、ボディパーツは損傷を防ぎながら、コンテナの容量を最大限に活かして配置します。</p></div><div class="why__c"><h3><span>強み 04</span>透明で誠実な取引</h3><p>隠れた費用やあいまいな在庫はありません。オークションでの購入内容をお伝えし、お客様のご注文で購入した車両から分解したとおりの部品を供給します。</p></div><div class="why__c"><h3><span>強み 05</span>長期的な供給サポート</h3><p>一度きりのご注文だけでなく、継続的なお取引にも対応します。お取引いただいたモデルを記録し、適した車両をオークションで継続的に探し続けます。定期便など、ご要望のモデルに合わせて安定した供給を続けます。</p></div></div></div>
-</section><section class="shband"><img src="../img/band-c-1440.jpg" width="1440" height="810" alt="ヤードのマットの上に置かれた中古エンジンとトランスミッションのセット" decoding="async" loading="lazy"></section>
+</section>
 </main>
 <section class="next"><div class="wrap next__in"><span class="next__l">次のページ</span><a class="next__t" href="destination.html">輸出先 <span aria-hidden="true">&rarr;</span></a></div></section>
 <script>
