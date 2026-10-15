@@ -333,7 +333,7 @@ def tpl_top(P):
              '<figure><img src="%simg/loading-900.jpg" width="900" height="675" alt="%s" decoding="async"></figure>'
              '</div>') % (pre, esc_attr(A["engine"]), pre, esc_attr(A["container"]), pre, esc_attr(A["loading"]))
 
-    return """<section class="hero grain">
+    return """<section class="hero hero--light grain">
   <div class="hero__glow"></div>
   <div class="wrap hero__banner">
     <span class="tag">%s</span>
@@ -740,8 +740,8 @@ def build():
             photo = ('<div class="top__photo" aria-hidden="true" '
                      'style="background-image:url(%simg/crane-1920.jpg)"></div>'
                      % ("" if P["code"] == "en" else "../"))
-            body = body.replace('<div class="wrap hero__banner">',
-                                '<div class="wrap hero__banner">\n' + photo, 1)
+            body = body.replace('<div class="hero__glow"></div>',
+                                photo + '\n  <div class="hero__glow"></div>', 1)
             body = body.replace('<section class="phead grain">',
                                 '<section class="phead grain">\n' + photo, 1)
             if k != "top" and k in BAND_BY_KEY:

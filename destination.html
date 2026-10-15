@@ -346,7 +346,7 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
   .band__in{grid-template-columns:1fr}
 }
 @media (max-width:900px){
-  .top__photo::after{background:linear-gradient(180deg,rgba(0,44,120,.60) 0%,rgba(0,50,132,.52) 52%,rgba(0,40,108,.64) 100%)}
+  .top__photo::after{background:linear-gradient(180deg,rgba(0,0,0,.56) 0%,rgba(0,0,0,.46) 52%,rgba(0,0,0,.64) 100%)}
   .hero__banner,.phead{min-height:0}
   .hero__grid{grid-template-columns:1fr}
   .stamp{justify-self:start;width:150px;height:150px;margin-top:1.5rem}
@@ -425,22 +425,49 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
 .shband::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(3,14,32,.22) 0%,rgba(3,14,32,0) 32%,rgba(3,14,32,0) 58%,rgba(3,14,32,.32) 100%)}
 
-/* unified page opening — photo backdrop, one size on every page */
-.top__photo{position:absolute;inset:0;z-index:0;background-repeat:no-repeat;background-size:cover;background-position:center 42%;
-  filter:saturate(1.28) contrast(1.05) brightness(1.03)}
+/* unified page opening — full-width photo, one size on every page */
+.top__photo{position:absolute;left:0;right:0;top:0;z-index:0;background-repeat:no-repeat;background-size:cover;background-position:center 42%;
+  filter:saturate(.85) contrast(1.06) brightness(.97)}
 .top__photo::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(0,52,140,.50) 0%,rgba(0,58,155,.40) 46%,rgba(0,42,112,.56) 100%)}
+  background:linear-gradient(180deg,rgba(0,0,0,.50) 0%,rgba(0,0,0,.40) 46%,rgba(0,0,0,.62) 100%)}
+.hero .top__photo{height:clamp(360px,42vw,500px)}
+.phead .top__photo{bottom:0}
 .hero__banner{position:relative;z-index:2;min-height:clamp(360px,42vw,500px);display:flex;flex-direction:column;
-  justify-content:center;align-items:flex-start;padding-block:clamp(1.6rem,3vw,2.6rem)}
-.hero__banner > .tag,.hero__banner > .h1{position:relative;z-index:1}
+  justify-content:center;align-items:flex-start;padding-block:clamp(1.4rem,2.6vw,2.2rem)}
 .phead{position:relative;z-index:2;min-height:clamp(360px,42vw,500px);display:flex;flex-direction:column;justify-content:center}
-.phead__in{width:100%;padding-block:clamp(1.6rem,3vw,2.4rem)}
-.hero__banner,.phead__in{text-shadow:0 2px 16px rgba(0,18,50,.78),0 1px 3px rgba(0,18,50,.66)}
+.phead__in{width:100%;padding-block:clamp(1.4rem,2.6vw,2.2rem)}
+.hero__banner,.phead__in{text-shadow:0 2px 16px rgba(0,0,0,.72),0 1px 3px rgba(0,0,0,.6)}
+
+/* (2) the top page's hero body is white, not blue */
+.hero--light{background:#fff}
+.hero--light .hero__glow{display:none}
+.hero--light .hero__body{color:var(--text-2)}
+.hero--light .btn--ghost{border-color:var(--line);color:var(--navy-800)}
+.hero--light .btn--ghost:hover{background:var(--navy-800);color:#fff;border-color:var(--navy-800)}
+.hero--light .stamp{border-color:var(--line);color:var(--muted)}
+.hero--light .stamp::before{border-color:var(--line)}
+.hero--light .strip{border-top-color:var(--line)}
+.hero--light .strip__c{border-right-color:var(--line)}
+.hero--light .strip__lab{color:var(--muted)}
+.hero--light .strip__val{color:var(--navy-800)}
+.hero--light .strip__c p,.hero--light .strip__c li{color:var(--text-2)}
+.hero--light .strip__main{border-top-color:var(--line)}
+.hero--light .link-m{color:var(--navy-800)}
+.hero--light .link-m:hover{color:var(--accent-d)}
 .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.2vw,1rem);margin-top:clamp(1.6rem,3vw,2.4rem)}
 .shots figure{margin:0;border:1px solid var(--line);background:#fff;overflow:hidden}
 .shots img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 @media (max-width:900px){ .shots{grid-template-columns:1fr} }
 .form__msg.is-ok{color:#0B7A45}
+
+/* banner typography — sized so every page's banner fits the same box */
+.hero__banner .tag{margin-bottom:1.05rem}
+.hero__banner .h1,.phead .h1{font-size:clamp(1.9rem,3.7vw,3.2rem);line-height:1.04}
+.phead .h1{margin-bottom:1.05rem}
+.phead .lead{font-size:clamp(1rem,1.15vw,1.06rem);line-height:1.66}
+.phead .crumb{margin-bottom:clamp(.9rem,1.8vw,1.25rem)}
+html[lang="ja"] .hero__banner .h1,html[lang="ja"] .phead .h1{font-size:clamp(1.5rem,2.9vw,2.3rem);line-height:1.3}
+@media (max-width:900px){ .hero .top__photo{height:clamp(290px,58vw,420px)} }
 </style>
 </head>
 <body>
