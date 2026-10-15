@@ -165,7 +165,7 @@ JS = """
 })();
 """
 
-ORDER = ["top", "about", "supply", "detail", "parts", "process", "why", "dest", "contact"]
+ORDER = ["top", "about", "supply", "detail", "process", "why", "dest", "contact"]
 
 
 def esc(s):
@@ -364,7 +364,7 @@ def tpl_top(P):
 
 <section class="sect on-mist">
   <div class="wrap">
-    <div class="sh rv"><div class="sh__l"><p class="eyebrow"><span class="code">05</span> %s</p>
+    <div class="sh rv"><div class="sh__l"><p class="eyebrow"><span class="code">04</span> %s</p>
       <h2 class="h2">%s</h2></div>
       <p class="lead">%s</p></div>
     %s
@@ -375,7 +375,7 @@ def tpl_top(P):
 
 <section class="sect">
   <div class="wrap">
-    <div class="sh rv"><div class="sh__l"><p class="eyebrow"><span class="code">07</span> %s</p>
+    <div class="sh rv"><div class="sh__l"><p class="eyebrow"><span class="code">06</span> %s</p>
       <h2 class="h2">%s</h2></div><p class="lead">%s</p></div>
     <div class="regions rv">%s</div>
   </div>
@@ -383,7 +383,7 @@ def tpl_top(P):
 
 <section class="band">
   <div class="wrap band__in rv">
-    <div><p class="eyebrow"><span class="code">08</span> %s</p><h2 class="h2">%s</h2>
+    <div><p class="eyebrow"><span class="code">07</span> %s</p><h2 class="h2">%s</h2>
       <p class="lead" style="color:#C3D2E0">%s</p></div>
     <p style="margin:0"><a class="btn btn--pri" href="%s">%s <span aria-hidden="true">&rarr;</span></a></p>
   </div>
@@ -440,26 +440,11 @@ def tpl_detail(P):
 </section>
 <section class="sect on-mist">
   <div class="wrap">
-    <div class="sh sh--one rv"><div class="sh__l"><p class="eyebrow"><span class="code">04</span> %s</p>
+    <div class="sh sh--one rv"><div class="sh__l"><p class="eyebrow"><span class="code">03</span> %s</p>
       <h2 class="h2">%s</h2></div></div>
     <div class="about__copy rv" style="max-width:74ch"><p>%s</p></div>
-    <p class="rv" style="margin-top:1.6rem"><a class="btn btn--ink" href="%s">%s <span aria-hidden="true">&rarr;</span></a></p>
   </div>
-</section>""" % (chips, d["next_h"], d["next_h"], d["next_p"], P["file"]["parts"],
-                 dict(P["nav"])["parts"])
-    return d["title"], d["desc"], body
-
-
-def tpl_parts(P):
-    d = P["p"]["parts"]
-    blocks = "".join('<div class="blk"><span class="idx">%s</span><h3>%s</h3><p>%s</p></div>' % b
-                     for b in d["blocks"])
-    body = phead_html(P, "parts", d) + """
-<section class="sect">
-  <div class="wrap">
-    <div class="blocks rv">%s</div>
-  </div>
-</section>""" % blocks
+</section>""" % (chips, d["next_h"], d["next_h"], d["next_p"])
     return d["title"], d["desc"], body
 
 
@@ -524,7 +509,7 @@ def tpl_dest(P):
 </section>
 <section class="sect">
   <div class="wrap">
-    <div class="sh sh--one rv"><div class="sh__l"><p class="eyebrow"><span class="code">07</span> %s</p>
+    <div class="sh sh--one rv"><div class="sh__l"><p class="eyebrow"><span class="code">06</span> %s</p>
       <h2 class="h2">%s</h2></div></div>
     <div class="ctry rv">%s</div>
     <div class="dest__grid rv"><h3>%s</h3><p>%s</p></div>
@@ -577,7 +562,7 @@ def tpl_contact(P):
 
 
 TPL = {"top": tpl_top, "about": tpl_about, "supply": tpl_supply, "detail": tpl_detail,
-       "parts": tpl_parts, "process": tpl_process, "why": tpl_why, "dest": tpl_dest, "contact": tpl_contact}
+       "process": tpl_process, "why": tpl_why, "dest": tpl_dest, "contact": tpl_contact}
 
 
 SITE_URL = "https://shinseiexport-sudo.github.io/carexport/"   # live GitHub Pages site
@@ -590,8 +575,8 @@ AREA = ["Africa", "Middle East", "Asia", "Oceania", "South America", "Trinidad &
         "South Africa", "Russia", "Philippines", "Peru", "Nigeria", "New Zealand",
         "Mauritius", "Malaysia", "Cyprus", "Bolivia", "Dubai", "Syria", "Pakistan"]
 PAGE_TYPE = {"about": "AboutPage", "contact": "ContactPage", "supply": "CollectionPage",
-             "detail": "CollectionPage", "parts": "CollectionPage"}
-SERVICE_PAGES = ("supply", "detail", "parts", "process", "dest")
+             "detail": "CollectionPage"}
+SERVICE_PAGES = ("supply", "detail", "process", "dest")
 SERVICE_TYPE = {"en": "Export of Japanese used engines, transmissions, half cuts and auto parts",
                 "ja": "\u65e5\u672c\u8eca\u306e\u4e2d\u53e4\u30a8\u30f3\u30b8\u30f3\u30fb\u30c8\u30e9\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3\u30fb\u30cf\u30fc\u30d5\u30ab\u30c3\u30c8\u30fb\u81ea\u52d5\u8eca\u90e8\u54c1\u306e\u8f38\u51fa"}
 SEO = {
@@ -603,8 +588,6 @@ SEO = {
    "How our order-based supply works: we purchase the exact vehicles you need from Japanese auto auctions — including Toyota, Nissan, Honda, Mazda, Mitsubishi, Subaru, Suzuki and Daihatsu models — then dismantle and pack engine + transmission sets, half cuts and body parts."),
  ("en", "detail"): ("Dismantling List | Used Engines, Transmissions, Half Cuts & Body Parts",
    "Parts we dismantle to your order: engines (gasoline / diesel), transmissions, nose cuts and half cuts, front and rear doors, hoods, tailgates, headlights, taillights, bumpers, suspension components, ABS units and more."),
- ("en", "parts"): ("Available Parts on Request | Engines, Body Parts & Half Cuts | Shinsei Export",
-   "No large ready stock. Engines, body parts, half cuts / nose cuts are prepared only after we purchase complete vehicles at Japanese auto auctions for your order."),
  ("en", "process"): ("Export Process | Auction Purchase, Dismantling & Container Shipping from Japan",
    "Our export process step by step: inquiry, confirmation and agreement, auction purchase, dismantling and sorting, container loading, and export from Japan under the agreed shipping terms (FOB Japan, etc.)."),
  ("en", "why"): ("Why Buyers Choose Us | Accurate Vehicle Selection & Safe Container Loading",
@@ -621,8 +604,6 @@ SEO = {
    "ご指定のモデルに合わせて日本のオークションで車両を調達し、分解。エンジン＋トランスミッションのセット、ハーフカット、ボディパーツをご用意します（トヨタ・日産・ホンダ・マツダ・三菱・スバル・スズキ・ダイハツなど）。"),
  ("ja", "detail"): ("分解部品リスト｜中古エンジン・トランスミッション・ハーフカット・ボディパーツ",
    "ご要望に応じて分解できる部品：エンジン（ガソリン／ディーゼル）、トランスミッション、ノーズカット／ハーフカット、ドア、ボンネット、テールゲート、ヘッドライト、バンパー、サスペンション部品、ABSユニットなど。"),
- ("ja", "parts"): ("取扱部品（受注後に手配）｜エンジン・ボディパーツ・ハーフカット",
-   "エンジンやボディパーツの大量在庫は保有していません。ご注文に基づき日本のオークションで車両を丸ごと購入したうえで、ハーフカットやノーズカットなどをご用意します。"),
  ("ja", "process"): ("取引の流れ｜オークションでの購入からコンテナ出港まで",
    "お問い合わせ、内容の確認とご合意、オークションでの購入、分解・仕分け、コンテナへの積み込み、日本からの輸出まで、流れを順にご案内します（FOB JAPAN など）。"),
  ("ja", "why"): ("選ばれる理由｜正確な車両選定と安全なコンテナ積み込み",

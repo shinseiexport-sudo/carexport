@@ -12,12 +12,12 @@ EN = {
   "brand_sub": "Japanese Auto Parts Export",
   "nav": [
     ("top", "Top"), ("about", "About Us"), ("supply", "Supply System"),
-    ("detail", "Dismantling List"), ("parts", "Parts"), ("process", "Process"),
+    ("detail", "Dismantling List"), ("process", "Process"),
     ("why", "Why Us"), ("dest", "Destination"), ("contact", "Contact"),
   ],
   "file": {
     "top": "index.html", "about": "about.html", "supply": "supply-system.html",
-    "detail": "detail.html", "parts": "parts.html", "process": "process.html",
+    "detail": "detail.html", "process": "process.html",
     "why": "why-us.html", "dest": "destination.html", "contact": "contact.html",
   },
   "cta": "Contact for Orders",
@@ -67,12 +67,11 @@ EN = {
          "text": "Body parts also available on request.", "bullets": [], "link": None},
       ],
       "toc_h2": "Explore Our Services",
-      "toc_lead": "Learn how we source vehicles, which parts we handle, and how the export process works.",
+      "toc_lead": "Learn how we source vehicles, what we can dismantle, and how the export process works.",
       "toc": {
         "about": "Learn about Shinsei Export and our operations in Osaka, Japan.",
         "supply": "Discover how we source vehicles and prepare parts based on your order.",
-        "detail": "See the engines, transmissions, half cuts, and other parts we can dismantle for your order.",
-        "parts": "Explore the engines, transmissions, half cuts, and other components we can prepare.",
+        "detail": "See the full list of engines, transmissions, half cuts, body parts and other items we can dismantle for your order.",
         "process": "See how we manage your order, from initial inquiry to shipment from Japan.",
         "why": "Learn about our sourcing, dismantling, and container-loading operations.",
         "dest": "Find out about our export markets and contact us to discuss shipping to your country.",
@@ -141,27 +140,11 @@ EN = {
       "next_p": "We do not keep large ready stock of engines or body parts. All parts are prepared only after purchasing complete vehicles from Japanese auto auctions based on your order.",
     },
 
-    "parts": {
-      "title": "Available Parts on Request — Engines, Body Parts, Half Cuts | Shinsei Export",
-      "desc": "All parts are prepared only after purchasing complete vehicles from Japanese auto auctions based on your order. We do not operate a single-item wholesale system.",
-      "code": "04", "eyebrow": "Available Parts (Prepared After Purchasing Vehicles for Your Order)",
-      "crumb": "Parts",
-      "h1": "Available Parts on Request",
-      "lead": "We do not keep large ready stock of engines or body parts. All parts are prepared only after purchasing complete vehicles from Japanese auto auctions based on your order. We do not operate a single-item wholesale system. Every item is supplied as the result of dismantling the vehicles we purchase specifically for your request.",
-      "blocks": [
-        ("A / Main Supply Item", "Engines &amp; Transmissions (Main Supply Item)",
-         "We mainly supply engine + transmission sets from gasoline and diesel vehicles. Engines can be sorted by displacement and model code depending on the available auction vehicles."),
-        ("B / Body Parts", "Body Parts (Doors / Fenders / Bumpers / Lamps)",
-         "Body parts are dismantled only from the vehicles we purchase for your order. Availability depends entirely on the models we can source at Japanese auctions at that time."),
-        ("C / Cut Bodies", "Half Cuts / Nose Cuts",
-         "Half cuts and nose cuts are prepared after confirming your required model. We dismantle only the vehicles purchased for your container, ensuring correct model selection."),
-      ],
-    },
 
     "process": {
       "title": "How We Work — Export Process from Japan | Shinsei Export",
       "desc": "From your inquiry until the container leaves Japan: inquiry, agreement, auction purchase, dismantling and sorting, container loading, export from Japan.",
-      "code": "05", "eyebrow": "Process", "crumb": "Process",
+      "code": "04", "eyebrow": "Process", "crumb": "Process",
       "h1": "How We Work",
       "lead": "From the moment you contact us until the container leaves Japan, we follow a clear and reliable process. This helps us keep supply safe, model selection accurate, and business transparent for all buyers.",
       "steps": [
@@ -177,7 +160,7 @@ EN = {
     "why": {
       "title": "Our Strengths — Why Choose Shinsei Export",
       "desc": "Accurate vehicle selection, professional dismantling, safe container loading, transparent business and long-term supply support from Osaka, Japan.",
-      "code": "06", "eyebrow": "Why Choose Us", "crumb": "Why Us",
+      "code": "05", "eyebrow": "Why Choose Us", "crumb": "Why Us",
       "h1": "Our Strengths",
       "lead": "We provide stable supply, accurate vehicle selection, and professional dismantling to support long-term business with overseas buyers. All work is handled by our team in Osaka, Japan.",
       "items": [
@@ -192,7 +175,7 @@ EN = {
     "dest": {
       "title": "Shipping Destinations — Worldwide Export | Shinsei Export",
       "desc": "We export Japanese engines, transmissions, half cuts and dismantled auto parts to Africa, the Middle East, Asia, Oceania, South America and many other regions.",
-      "code": "07", "eyebrow": "Worldwide Export", "crumb": "Destination",
+      "code": "06", "eyebrow": "Worldwide Export", "crumb": "Destination",
       "h1": "Our Shipping Destinations",
       "lead": "We export Japanese used auto parts such as engines, transmissions, and half cuts to buyers across Africa, the Middle East, Asia, Oceania, and South America.",
       "gap_lead": "Containers leave Osaka for buyers across Africa, the Middle East, Asia, Oceania and South America. The map below shows every region we ship to.",
@@ -217,7 +200,7 @@ EN = {
     "contact": {
       "title": "Buyer Application Form — Contact | Shinsei Export",
       "desc": "Guidance for first-time business partners and the buyer application form. Please read our Trading Terms & Conditions before applying.",
-      "code": "08", "eyebrow": "Guidance for First-Time Business Partners", "crumb": "Contact",
+      "code": "07", "eyebrow": "Guidance for First-Time Business Partners", "crumb": "Contact",
       "h1": "Buyer Application Form",
       "lead": "Thank you very much for considering doing business with us. Before submitting your application, please review the following important points:",
       "note_h": "Before you submit",
@@ -256,12 +239,12 @@ JA = {
   "brand_sub": "日本の中古自動車部品輸出",
   "nav": [
     ("top", "ホーム"), ("about", "会社概要"), ("supply", "供給システム"),
-    ("detail", "分解部品リスト"), ("parts", "取扱部品"), ("process", "取引の流れ"),
+    ("detail", "分解部品リスト"), ("process", "取引の流れ"),
     ("why", "選ばれる理由"), ("dest", "輸出先"), ("contact", "お問い合わせ"),
   ],
   "file": {
     "top": "index.html", "about": "about.html", "supply": "supply-system.html",
-    "detail": "detail.html", "parts": "parts.html", "process": "process.html",
+    "detail": "detail.html", "process": "process.html",
     "why": "why-us.html", "dest": "destination.html", "contact": "contact.html",
   },
   "cta": "ご注文・お問い合わせ",
@@ -311,12 +294,11 @@ JA = {
          "text": "ボディパーツもご要望に応じてご用意します。", "bullets": [], "link": None},
       ],
       "toc_h2": "サービス案内",
-      "toc_lead": "調達方法・取扱部品・取引の流れをご覧いただけます。",
+      "toc_lead": "調達方法・分解できる部品・取引の流れをご覧いただけます。",
       "toc": {
         "about": "大阪を拠点とするShinsei Exportの事業内容をご紹介します。",
         "supply": "ご希望の車種に合わせた車両調達から、分解・部品準備までの流れをご紹介します。",
-        "detail": "ご要望に応じて分解できるエンジン、トランスミッション、ハーフカットなどをご紹介します。",
-        "parts": "エンジン、トランスミッション、ハーフカット、各種ボディパーツなどをご紹介します。",
+        "detail": "ご要望に応じて分解できるエンジン、トランスミッション、ハーフカット、ボディパーツなどの品目一覧をご覧いただけます。",
         "process": "お問い合わせから車両調達、分解、コンテナ積み込み、日本からの輸出までの流れをご案内します。",
         "why": "車両の調達、分解作業、コンテナ積み込みにおける当社の取り組みをご紹介します。",
         "dest": "主な輸出地域をご紹介します。お届け先の国や輸送条件についてはお問い合わせください。",
@@ -385,26 +367,11 @@ JA = {
       "next_p": "エンジンやボディパーツの大量在庫は保有していません。ご注文に基づき、日本のオークションで車両を丸ごと購入したうえで、はじめて部品を準備します。",
     },
 
-    "parts": {
-      "title": "取扱部品（受注後に手配）｜Shinsei Export",
-      "desc": "部品はすべて、ご注文に基づき日本のオークションで車両を丸ごと購入したうえでご用意します。単品のみの卸売は行っていません。",
-      "code": "04", "eyebrow": "取扱部品（ご注文に基づく車両購入後に手配）", "crumb": "取扱部品",
-      "h1": "ご要望に応じてご用意する部品",
-      "lead": "エンジンやボディパーツの大量在庫は保有していません。部品はすべて、ご注文に基づき日本のオークションで車両を丸ごと購入したうえで準備します。単品のみの卸売は行っていません。いずれも、お客様のご注文に合わせて購入した車両を分解したうえで供給しています。",
-      "blocks": [
-        ("A / 主要供給品目", "エンジン＆トランスミッション（主要取扱品目）",
-         "ガソリン車・ディーゼル車のエンジン＋トランスミッションセットを中心に供給しています。エンジンは、その時点で仕入れ可能なオークション車両に応じて、排気量やモデルコード別にお選びいただけます。"),
-        ("B / ボディパーツ", "ボディパーツ（ドア／フェンダー／バンパー／ランプ）",
-         "ボディパーツは、ご注文に合わせて当社が購入した車両からのみ分解します。ご用意できるかどうかは、その時点で日本のオークションから仕入れられるモデル次第です。"),
-        ("C / カットボディ", "ハーフカット／ノーズカット",
-         "ハーフカットとノーズカットは、ご希望のモデルを確認したうえでご用意します。お客様のコンテナ向けに購入した車両のみを分解するため、モデル選定に誤りが生じません。"),
-      ],
-    },
 
     "process": {
       "title": "取引の流れ｜日本からの輸出プロセス｜Shinsei Export",
       "desc": "お問い合わせからコンテナの出港まで。お問い合わせ、内容の確認とご合意、オークションでの購入、分解・仕分け、コンテナへの積み込み、日本からの輸出という流れで進みます。",
-      "code": "05", "eyebrow": "取引の流れ", "crumb": "取引の流れ",
+      "code": "04", "eyebrow": "取引の流れ", "crumb": "取引の流れ",
       "h1": "取引の流れ",
       "lead": "お問い合わせからコンテナの出港まで、わかりやすく確実な流れで対応します。安全な供給、正確なモデル選定、透明性のあるお取引を、すべてのお取引先様に向けて実現します。",
       "steps": [
@@ -420,7 +387,7 @@ JA = {
     "why": {
       "title": "選ばれる理由｜当社の強み｜Shinsei Export",
       "desc": "正確な車両選定、確かな分解、安全なコンテナ積み込み、透明な取引、長期的な供給サポート。すべて大阪で対応します。",
-      "code": "06", "eyebrow": "選ばれる理由", "crumb": "選ばれる理由",
+      "code": "05", "eyebrow": "選ばれる理由", "crumb": "選ばれる理由",
       "h1": "当社の強み",
       "lead": "海外のお取引先様との長期的なお取引に向けて、安定した供給、正確な車両選定、確かな分解技術でお応えします。作業はすべて日本・大阪で行っています。",
       "items": [
@@ -435,7 +402,7 @@ JA = {
     "dest": {
       "title": "輸出先｜世界各地への輸出｜Shinsei Export",
       "desc": "日本車の中古エンジン、トランスミッション、ハーフカット、分解済み自動車部品を、アフリカ・中東・アジア・オセアニア・南米など世界各地へ輸出しています。",
-      "code": "07", "eyebrow": "世界各地への輸出", "crumb": "輸出先",
+      "code": "06", "eyebrow": "世界各地への輸出", "crumb": "輸出先",
       "h1": "輸出先",
       "lead": "エンジン、トランスミッション、ハーフカットなど、日本の中古自動車部品を、アフリカ・中東・アジア・オセアニア・南米のお取引先様へ輸出しています。",
       "gap_lead": "コンテナは大阪から、アフリカ・中東・アジア・オセアニア・南米のお客様のもとへ出荷されます。下の地図で輸出先の地域をご確認ください。",
@@ -460,7 +427,7 @@ JA = {
     "contact": {
       "title": "お取引のお申し込み｜お問い合わせ｜Shinsei Export",
       "desc": "初めてお取引いただくお客様へのご案内とお申し込みフォームです。お申し込みの前に取引条件をご確認ください。",
-      "code": "08", "eyebrow": "初めてお取引いただくお客様へ", "crumb": "お問い合わせ",
+      "code": "07", "eyebrow": "初めてお取引いただくお客様へ", "crumb": "お問い合わせ",
       "h1": "お取引のお申し込み",
       "lead": "当社とのお取引をご検討いただき、誠にありがとうございます。お申し込みの前に、以下の重要事項をご確認ください。",
       "note_h": "お申し込み前に",
