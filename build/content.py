@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
 """Content packs (EN / JA) for the Shinsei Export multi-page site."""
 
-TERMS = "https://drive.google.com/file/d/1cIurm7ZJlEmCC69S5cdZGVsRgl_fvm-b/view?usp=sharing"
+# Trading Terms & Conditions are served from the site itself (no Google Drive dependency).
+# Paths are relative to each page: EN lives at the site root, JA lives in /ja/.
+TERMS = {
+  "en": "terms/Shinsei_Scrap_Export_Terms.pdf",
+  "ja": "../terms/Shinsei_Scrap_Export_Terms.pdf",
+}
 
 # ---------------------------------------------------------------- EN
 EN = {
@@ -210,7 +215,7 @@ EN = {
       "note_h": "Before you submit",
       "email_label": "Email",
       "note": [
-        'Please read our <a href="%s" target="_blank" rel="noopener">Trading Terms &amp; Conditions</a> before filling out the Application Form.' % TERMS,
+        'Please read our <a href="%s" target="_blank" rel="noopener">Trading Terms &amp; Conditions</a> before filling out the Application Form.' % TERMS["en"],
         "You do not need to complete every field, but insufficient information may delay or prevent approval.",
         "All information must be entered in English.",
       ],
@@ -223,14 +228,14 @@ EN = {
         ("email", "Email", "email", "email", True, "Email"),
       ],
       "message_label": "Message", "message_required": True,
-      "agree": 'I agree to the <a href="%s" target="_blank" rel="noopener">Trading Terms &amp; Conditions</a>.' % TERMS,
+      "agree": 'I agree to the <a href="%s" target="_blank" rel="noopener">Trading Terms &amp; Conditions</a>.' % TERMS["en"],
       "btn": "Submit", "foot_note": "All fields marked * are required",
       "data_agree": "Trading Terms &amp; Conditions agreement",
       "msg_missing": "Please complete: {fields}.",
       "msg_ok": "Thank you. Your application has been sent. Our team will reply to you shortly.",
       "msg_sending": "Sending your application\u2026",
       "msg_error": "Sorry, your application could not be sent. Please try again, or email us at ex@shinsei-ltd.co.jp.",
-      "terms_link": TERMS,
+      "terms_link": TERMS["en"],
     },
   },
 }
@@ -441,7 +446,7 @@ JA = {
       "note_h": "お申し込み前に",
       "email_label": "メールアドレス",
       "note": [
-        'お申し込みフォームにご記入いただく前に、<a href="%s" target="_blank" rel="noopener">取引条件</a>をお読みください。' % TERMS,
+        'お申し込みフォームにご記入いただく前に、<a href="%s" target="_blank" rel="noopener">取引条件</a>をお読みください。' % TERMS["ja"],
         "すべての項目を記入いただく必要はありませんが、情報が不足していると審査が遅れたり、承認されない場合があります。",
         "入力はすべて英語でお願いいたします。",
       ],
@@ -454,14 +459,14 @@ JA = {
         ("email", "メールアドレス", "email", "email", True, "メールアドレス"),
       ],
       "message_label": "お問い合わせ内容", "message_required": True,
-      "agree": '<a href="%s" target="_blank" rel="noopener">取引条件</a>に同意します。' % TERMS,
+      "agree": '<a href="%s" target="_blank" rel="noopener">取引条件</a>に同意します。' % TERMS["ja"],
       "btn": "送信する", "foot_note": "＊印は必須項目です",
       "data_agree": "取引条件への同意",
       "msg_missing": "未入力の項目があります：{fields}。",
       "msg_ok": "送信が完了しました。内容を確認のうえ、担当者よりご連絡いたします。",
       "msg_sending": "送信中です\u2026",
       "msg_error": "送信できませんでした。お手数ですが、時間をおいて再度お試しいただくか、ex@shinsei-ltd.co.jp までご連絡ください。",
-      "terms_link": TERMS,
+      "terms_link": TERMS["ja"],
     },
   },
 }

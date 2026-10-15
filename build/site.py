@@ -755,7 +755,16 @@ def build():
             if fn.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
                 shutil.copy2(os.path.join(web, fn), os.path.join(dst, fn))
                 imgs += 1
-    print("generated", n, "HTML files + robots.txt + sitemap.xml +", imgs, "images into", os.path.normpath(OUT))
+    # Trading Terms & Conditions PDF: served from the site itself (no Google Drive dependency)
+    root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+    tsrc = os.path.join(root, "terms", "Shinsei_Scrap_Export_Terms.pdf")
+    tpdf = 0
+    if os.path.isfile(tsrc):
+        tdst = os.path.join(OUT, "terms")
+        os.makedirs(tdst, exist_ok=True)
+        shutil.copy2(tsrc, os.path.join(tdst, "Shinsei_Scrap_Export_Terms.pdf"))
+        tpdf = 1
+    print("generated", n, "HTML files + robots.txt + sitemap.xml +", imgs, "images +", tpdf, "terms PDF into", os.path.normpath(OUT))
 
 
 if __name__ == "__main__":
