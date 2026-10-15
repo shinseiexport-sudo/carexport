@@ -10,7 +10,7 @@ STEP_WORD = {"en": "Step", "ja": "手順"}
 IMG_ALT = {
     "en": {
         "band": "A container ship and gantry cranes at a Japanese export port, with stacked containers on the quay",
-        "engine": "A used engine and transmission set placed on a work mat in our yard",
+        "engine": "A used engine and transmission set placed on a mat in the yard",
         "container": "An export container loaded with used car doors and body parts, secured with belts",
         "loading": "Used engines and transmissions loaded on a truck bed for transport",
         "port": "The view from the bridge of a container ship at sea, with containers stacked on deck",
@@ -586,51 +586,51 @@ SITE_NAME = "Shinsei Export"
 HEAD_EXTRA = {"dest": '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">\n'
                       '<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>'}
 GSC = "2zKAr9KS1fjXInJx9Lmh07sJubR0UfiaeLRn8hGXsTc"
-AREA = ["Africa", "Middle East", "Asia", "South America", "Trinidad & Tobago", "Thailand",
+AREA = ["Africa", "Middle East", "Asia", "Oceania", "South America", "Trinidad & Tobago", "Thailand",
         "South Africa", "Russia", "Philippines", "Peru", "Nigeria", "New Zealand",
         "Mauritius", "Malaysia", "Cyprus", "Bolivia", "Dubai", "Syria", "Pakistan"]
 PAGE_TYPE = {"about": "AboutPage", "contact": "ContactPage", "supply": "CollectionPage",
              "detail": "CollectionPage", "parts": "CollectionPage"}
 SERVICE_PAGES = ("supply", "detail", "parts", "process", "dest")
 SERVICE_TYPE = {"en": "Export of Japanese used engines, transmissions, half cuts and auto parts",
-                "ja": "\u65e5\u672c\u88fd\u4e2d\u53e4\u30a8\u30f3\u30b8\u30f3\u30fb\u30c8\u30e9\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3\u30fb\u30cf\u30fc\u30d5\u30ab\u30c3\u30c8\u30fb\u81ea\u52d5\u8eca\u90e8\u54c1\u306e\u8f38\u51fa"}
+                "ja": "\u65e5\u672c\u8eca\u306e\u4e2d\u53e4\u30a8\u30f3\u30b8\u30f3\u30fb\u30c8\u30e9\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3\u30fb\u30cf\u30fc\u30d5\u30ab\u30c3\u30c8\u30fb\u81ea\u52d5\u8eca\u90e8\u54c1\u306e\u8f38\u51fa"}
 SEO = {
  ("en", "top"): ("Japanese Used Engines, Transmissions & Half Cut Exporter | Shinsei Export, Osaka",
-   "Direct export from Japan: used Japanese engines (G / D), transmissions, half cuts and body parts, bought at Japanese auto auctions and dismantled in Osaka. Order-based supply for workshops, mechanics and wholesalers in Africa, the Middle East, Asia and South America."),
+   "Direct export from Japan: used Japanese engines (gasoline / diesel), transmissions, half cuts and body parts, bought at Japanese auto auctions and dismantled in Osaka. Order-based supply for workshops, mechanics and wholesalers in Africa, the Middle East, Asia, Oceania and South America."),
  ("en", "about"): ("About Shinsei Export | Osaka-Based Japanese Auto Parts Exporter",
    "Shinsei Export is an Osaka-based supplier of Japanese engines, transmissions, half cuts and essential auto parts for overseas workshops and wholesalers. No over-stocking: we buy at major Japanese auto auctions to your order and dismantle them for your container."),
  ("en", "supply"): ("Order-Based Supply System | Used Japanese Engines & Transmissions from Auctions",
-   "How our order-based supply works: we purchase the exact vehicles you need from Japanese auto auctions (Toyota, Nissan, Honda, Mazda, Mitsubishi, Subaru, Suzuki, Daihatsu), then dismantle and pack engine + transmission sets, half cuts and body parts."),
- ("en", "detail"): ("Dismantled Parts List | Used Engines, Transmissions, Half Cuts & Body Parts",
-   "Parts we dismantle to your order: engines (G / D), transmissions, nose cuts and half cuts, front and rear doors, hoods, tailgates, headlights, taillights, bumpers, suspension components, ABS units and more."),
+   "How our order-based supply works: we purchase the exact vehicles you need from Japanese auto auctions — including Toyota, Nissan, Honda, Mazda, Mitsubishi, Subaru, Suzuki and Daihatsu models — then dismantle and pack engine + transmission sets, half cuts and body parts."),
+ ("en", "detail"): ("Dismantling List | Used Engines, Transmissions, Half Cuts & Body Parts",
+   "Parts we dismantle to your order: engines (gasoline / diesel), transmissions, nose cuts and half cuts, front and rear doors, hoods, tailgates, headlights, taillights, bumpers, suspension components, ABS units and more."),
  ("en", "parts"): ("Available Parts on Request | Engines, Body Parts & Half Cuts | Shinsei Export",
    "No large ready stock. Engines, body parts, half cuts / nose cuts are prepared only after we purchase complete vehicles at Japanese auto auctions for your order."),
  ("en", "process"): ("Export Process | Auction Purchase, Dismantling & Container Shipping from Japan",
    "Our export process step by step: inquiry, confirmation and agreement, auction purchase, dismantling and sorting, container loading, and export from Japan under the agreed shipping terms (FOB Japan, etc.)."),
  ("en", "why"): ("Why Buyers Choose Us | Accurate Vehicle Selection & Safe Container Loading",
    "Accurate vehicle selection, professional dismantling, safe and organized container loading, transparent and honest business, and long-term supply support. All work is handled by our team in Osaka, Japan."),
- ("en", "dest"): ("Shipping Destinations | Africa, Middle East, Asia & South America | Shinsei Export",
+ ("en", "dest"): ("Shipping Destinations | Africa, Middle East, Asia, Oceania & South America | Shinsei Export",
    "We export Japanese engines, transmissions, half cuts and dismantled auto parts to Dubai (UAE), Syria, Pakistan, Trinidad & Tobago, Thailand, South Africa, Russia, the Philippines, Peru, Nigeria, New Zealand, Mauritius, Malaysia, Cyprus, Bolivia and many other regions."),
  ("en", "contact"): ("Buyer Application Form | Contact Shinsei Export for Japanese Auto Parts",
    "Request Japanese engines, transmissions, half cuts and body parts. Please read our Trading Terms & Conditions before filling out the buyer application form. All information must be entered in English."),
  ("ja", "top"): ("中古エンジン・トランスミッション・ハーフカットの輸出｜大阪の中古自動車部品輸出業者 Shinsei Export",
-   "日本・大阪から、中古エンジン（G／D）、トランスミッション、ハーフカット、ボディパーツを直接輸出。ご注文に合わせてオークションで車両を購入し、分解して、世界各地の整備工場・卸売業者様へ安定供給します。"),
+   "日本・大阪から、日本車の中古エンジン（ガソリン／ディーゼル）、トランスミッション、ハーフカット、ボディパーツを直接輸出。ご注文に合わせてオークションで車両を調達し、大阪で分解して、アフリカ・中東・アジア・オセアニア・南米の整備工場・卸売業者様へ安定供給します。"),
  ("ja", "about"): ("会社概要｜大阪の中古エンジン・ハーフカット輸出業者 Shinsei Export",
-   "Shinsei Exportは、海外の整備工場・卸売業者様向けに、日本製エンジン、トランスミッション、ハーフカット、自動車部品を供給する大阪の企業です。大量在庫は保有せず、ご注文に基づいてオークションで車両を購入し、分解します。"),
+   "Shinsei Exportは、海外の整備工場・卸売業者様向けに、日本車の中古エンジン、トランスミッション、ハーフカット、自動車部品を供給する大阪の企業です。大量在庫は保有せず、ご注文に基づいてオークションで車両を調達し、分解します。"),
  ("ja", "supply"): ("受注ベースの供給システム｜オークションからエンジン・ハーフカットを手配",
-   "ご指定のモデルに合わせて日本のオークションで車両を購入し、分解。エンジン＋トランスミッションのセット、ハーフカット、ボディパーツをご用意します（トヨタ・日産・ホンダ・マツダ・三菱・スバル・スズキ・ダイハツ）。"),
+   "ご指定のモデルに合わせて日本のオークションで車両を調達し、分解。エンジン＋トランスミッションのセット、ハーフカット、ボディパーツをご用意します（トヨタ・日産・ホンダ・マツダ・三菱・スバル・スズキ・ダイハツなど）。"),
  ("ja", "detail"): ("分解部品リスト｜中古エンジン・トランスミッション・ハーフカット・ボディパーツ",
-   "ご要望に応じて分解できる部品：エンジン（G／D）、トランスミッション、ノーズカット／ハーフカット、ドア、ボンネット、テールゲート、ヘッドライト、バンパー、サスペンション部品、ABSユニットなど。"),
+   "ご要望に応じて分解できる部品：エンジン（ガソリン／ディーゼル）、トランスミッション、ノーズカット／ハーフカット、ドア、ボンネット、テールゲート、ヘッドライト、バンパー、サスペンション部品、ABSユニットなど。"),
  ("ja", "parts"): ("取扱部品（受注後に手配）｜エンジン・ボディパーツ・ハーフカット",
-   "エンジンやボディパーツの大量在庫は保有していません。ご注文に基づき日本のオークションで完成車を購入したのち、ハーフカットやノーズカットなどをご用意します。"),
+   "エンジンやボディパーツの大量在庫は保有していません。ご注文に基づき日本のオークションで車両を丸ごと購入したうえで、ハーフカットやノーズカットなどをご用意します。"),
  ("ja", "process"): ("取引の流れ｜オークションでの購入からコンテナ出港まで",
    "お問い合わせ、内容の確認とご合意、オークションでの購入、分解・仕分け、コンテナへの積み込み、日本からの輸出まで、流れを順にご案内します（FOB JAPAN など）。"),
  ("ja", "why"): ("選ばれる理由｜正確な車両選定と安全なコンテナ積み込み",
    "正確な車両選定、確かな分解、整理されたコンテナ積み込み、透明な取引、長期的な供給サポート。作業はすべて大阪で行っています。"),
- ("ja", "dest"): ("輸出先｜アフリカ・中東・アジア・南米など世界各地へ輸出",
-   "日本製エンジン、トランスミッション、ハーフカット、分解済み自動車部品を、ドバイ（UAE）、シリア、パキスタン、トリニダード・トバゴ、タイ、南アフリカ、ロシア、フィリピン、ペルー、ナイジェリア、ニュージーランド、モーリシャス、マレーシア、キプロス、ボリビアなどへ輸出しています。"),
- ("ja", "contact"): ("買い手申請フォーム｜お問い合わせ",
-   "日本製エンジン、トランスミッション、ハーフカット、ボディパーツのお見積りはこちら。お申し込みの前に取引条件をご確認ください。"),
+ ("ja", "dest"): ("輸出先｜アフリカ・中東・アジア・オセアニア・南米など世界各地へ輸出",
+   "日本車の中古エンジン、トランスミッション、ハーフカット、分解済み自動車部品を、ドバイ（UAE）、シリア、パキスタン、トリニダード・トバゴ、タイ、南アフリカ、ロシア、フィリピン、ペルー、ナイジェリア、ニュージーランド、モーリシャス、マレーシア、キプロス、ボリビアなどへ輸出しています。"),
+ ("ja", "contact"): ("お取引のお申し込み｜お問い合わせ",
+   "日本車の中古エンジン、トランスミッション、ハーフカット、ボディパーツのお見積りはこちら。お申し込みの前に取引条件をご確認ください。"),
 }
 
 
