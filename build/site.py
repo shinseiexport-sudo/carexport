@@ -166,6 +166,8 @@ JS = """
 """
 
 ORDER = ["top", "about", "supply", "detail", "process", "why", "dest", "contact"]
+# "Explore Our Services" cards on the top page (contact is reached from the CTA band)
+TOC_KEYS = ["about", "supply", "detail", "process", "why", "dest"]
 
 
 def esc(s):
@@ -312,10 +314,11 @@ def tpl_top(P):
     strip = strip[:2] + [strip[-1]]
 
     toc = []
-    for k, lab in P["nav"][1:]:
-        i = "%02d" % (P["nav"].index((k, lab)))
+    navkeys = [kk for kk, _ in P["nav"]]
+    for k in TOC_KEYS:
+        i = "%02d" % navkeys.index(k)
         toc.append('<a class="toc__i" href="%s"><span class="toc__n">%s</span><span><span class="toc__t">%s</span>'
-                   '<span class="toc__d">%s</span></span></a>' % (P["file"][k], i, lab, d["toc"][k]))
+                   '<span class="toc__d">%s</span></span></a>' % (P["file"][k], i, d["toc_lab"][k], d["toc"][k]))
 
     mini = []
     for i, t in enumerate(d["steps"]):
@@ -581,15 +584,15 @@ SERVICE_TYPE = {"en": "Export of Japanese used engines, transmissions, half cuts
                 "ja": "\u65e5\u672c\u8eca\u306e\u4e2d\u53e4\u30a8\u30f3\u30b8\u30f3\u30fb\u30c8\u30e9\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3\u30fb\u30cf\u30fc\u30d5\u30ab\u30c3\u30c8\u30fb\u81ea\u52d5\u8eca\u90e8\u54c1\u306e\u8f38\u51fa"}
 SEO = {
  ("en", "top"): ("Japanese Used Engines, Transmissions & Half Cut Exporter | Shinsei Export, Osaka",
-   "Direct export from Japan: used Japanese engines (gasoline / diesel), transmissions, half cuts and body parts, bought at Japanese auto auctions and dismantled in Osaka. Order-based supply for workshops, mechanics and wholesalers in Africa, the Middle East, Asia, Oceania and South America."),
+   "Direct export from Japan: used Japanese engines (gasoline / diesel), transmissions, half cuts and body parts, sourced at Japanese auto auctions to your order and dismantled in Osaka. Order-based supply for overseas buyers in Africa, the Middle East, Asia, Oceania and South America."),
  ("en", "about"): ("About Shinsei Export | Osaka-Based Japanese Auto Parts Exporter",
-   "Shinsei Export is an Osaka-based supplier of Japanese engines, transmissions, half cuts and essential auto parts for overseas workshops and wholesalers. No over-stocking: we buy at major Japanese auto auctions to your order and dismantle them for your container."),
+   "Shinsei Export is an Osaka-based supplier of Japanese engines, transmissions, half cuts and essential auto parts for overseas buyers. No over-stocking: we source at major Japanese auto auctions to your order and dismantle them for your container."),
  ("en", "supply"): ("Order-Based Supply System | Used Japanese Engines & Transmissions from Auctions",
    "How our order-based supply works: we purchase the exact vehicles you need from Japanese auto auctions — including Toyota, Nissan, Honda, Mazda, Mitsubishi, Subaru, Suzuki and Daihatsu models — then dismantle and pack engine + transmission sets, half cuts and body parts."),
- ("en", "detail"): ("Dismantling List | Used Engines, Transmissions, Half Cuts & Body Parts",
-   "Parts we dismantle to your order: engines (gasoline / diesel), transmissions, nose cuts and half cuts, front and rear doors, hoods, tailgates, headlights, taillights, bumpers, suspension components, ABS units and more."),
+ ("en", "detail"): ("Parts Sourcing | How We Source the Parts You Require",
+   "Explore how we source vehicles and arrange the parts you require: engines (gasoline / diesel), transmissions, nose cuts and half cuts, doors, hoods, tailgates, lights, bumpers, suspension components and more — all prepared to your order."),
  ("en", "process"): ("Export Process | Auction Purchase, Dismantling & Container Shipping from Japan",
-   "Our export process step by step: inquiry, confirmation and agreement, auction purchase, dismantling and sorting, container loading, and export from Japan under the agreed shipping terms (FOB Japan, etc.)."),
+   "Our export process step by step: inquiry, confirmation and agreement, auction purchase, dismantling and sorting, container loading, and export from Japan under the agreed export and shipping terms."),
  ("en", "why"): ("Why Buyers Choose Us | Accurate Vehicle Selection & Safe Container Loading",
    "Accurate vehicle selection, professional dismantling, safe and organized container loading, transparent and honest business, and long-term supply support. All work is handled by our team in Osaka, Japan."),
  ("en", "dest"): ("Shipping Destinations | Africa, Middle East, Asia, Oceania & South America | Shinsei Export",
@@ -597,15 +600,15 @@ SEO = {
  ("en", "contact"): ("Buyer Application Form | Contact Shinsei Export for Japanese Auto Parts",
    "Request Japanese engines, transmissions, half cuts and body parts. Please read our Trading Terms & Conditions before filling out the buyer application form. All information must be entered in English."),
  ("ja", "top"): ("中古エンジン・トランスミッション・ハーフカットの輸出｜大阪の中古自動車部品輸出業者 Shinsei Export",
-   "日本・大阪から、日本車の中古エンジン（ガソリン／ディーゼル）、トランスミッション、ハーフカット、ボディパーツを直接輸出。ご注文に合わせてオークションで車両を調達し、大阪で分解して、アフリカ・中東・アジア・オセアニア・南米の整備工場・卸売業者様へ安定供給します。"),
+   "日本・大阪から、日本車の中古エンジン（ガソリン／ディーゼル）、トランスミッション、ハーフカット、ボディパーツを直接輸出。ご注文に合わせてオークションで車両を調達し、大阪で分解して、アフリカ・中東・アジア・オセアニア・南米の海外のお客様へ安定供給します。"),
  ("ja", "about"): ("会社概要｜大阪の中古エンジン・ハーフカット輸出業者 Shinsei Export",
-   "Shinsei Exportは、海外の整備工場・卸売業者様向けに、日本車の中古エンジン、トランスミッション、ハーフカット、自動車部品を供給する大阪の企業です。大量在庫は保有せず、ご注文に基づいてオークションで車両を調達し、分解します。"),
+   "Shinsei Exportは、海外のお客様向けに、日本車の中古エンジン、トランスミッション、ハーフカット、自動車部品を供給する大阪の企業です。大量在庫は保有せず、ご注文に基づいてオークションで車両を調達し、分解します。"),
  ("ja", "supply"): ("受注ベースの供給システム｜オークションからエンジン・ハーフカットを手配",
    "ご指定のモデルに合わせて日本のオークションで車両を調達し、分解。エンジン＋トランスミッションのセット、ハーフカット、ボディパーツをご用意します（トヨタ・日産・ホンダ・マツダ・三菱・スバル・スズキ・ダイハツなど）。"),
- ("ja", "detail"): ("分解部品リスト｜中古エンジン・トランスミッション・ハーフカット・ボディパーツ",
-   "ご要望に応じて分解できる部品：エンジン（ガソリン／ディーゼル）、トランスミッション、ノーズカット／ハーフカット、ドア、ボンネット、テールゲート、ヘッドライト、バンパー、サスペンション部品、ABSユニットなど。"),
+ ("ja", "detail"): ("部品の調達について｜ご希望に応じた車両調達と部品準備",
+   "ご希望に応じた車両調達と、必要な部品を準備する仕組みをご紹介します。エンジン（ガソリン／ディーゼル）、トランスミッション、ノーズカット／ハーフカット、ドア、ボンネット、テールゲート、ライト、バンパー、サスペンション部品など、ご注文に合わせてご用意します。"),
  ("ja", "process"): ("取引の流れ｜オークションでの購入からコンテナ出港まで",
-   "お問い合わせ、内容の確認とご合意、オークションでの購入、分解・仕分け、コンテナへの積み込み、日本からの輸出まで、流れを順にご案内します（FOB JAPAN など）。"),
+   "お問い合わせ、内容確認・条件の合意、オートオークションでの車両購入、分解・仕分け、コンテナへの積み込み、日本からの輸出まで、流れを順にご案内します。"),
  ("ja", "why"): ("選ばれる理由｜正確な車両選定と安全なコンテナ積み込み",
    "正確な車両選定、確かな分解、整理されたコンテナ積み込み、透明な取引、長期的な供給サポート。作業はすべて大阪で行っています。"),
  ("ja", "dest"): ("輸出先｜アフリカ・中東・アジア・オセアニア・南米など世界各地へ輸出",
