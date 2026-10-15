@@ -455,7 +455,7 @@ def tpl_parts(P):
     blocks = "".join('<div class="blk"><span class="idx">%s</span><h3>%s</h3><p>%s</p></div>' % b
                      for b in d["blocks"])
     body = phead_html(P, "parts", d) + """
-<section class="sect on-mist">
+<section class="sect">
   <div class="wrap">
     <div class="blocks rv">%s</div>
   </div>
@@ -469,7 +469,7 @@ def tpl_process(P):
                     '<span class="rstep__k">%s%s</span></div><h3>%s</h3><p>%s</p></div>'
                     % (s[0], STEP_WORD[P["code"]], s[0], s[1], s[2]) for s in d["steps"])
     body = phead_html(P, "process", d) + """
-<section class="sect on-mist">
+<section class="sect">
   <div class="wrap"><div class="route rv">%s</div></div>
 </section>""" % steps
     return d["title"], d["desc"], body
@@ -504,6 +504,12 @@ def tpl_dest(P):
     band = ('<section class="shband"><img src="%simg/shipdeck-1440.jpg" width="1440" height="810" '
             'alt="%s" decoding="async"></section>'
             % (("" if P["code"] == "en" else "../"), esc_attr(IMG_ALT[P["code"]]["port"])))
+    rchips = "".join('<span class="chip"><b>%02d</b>%s</span>' % (i + 1, rlab)
+                     for i, (rlab, _cs) in enumerate(d["countries"]))
+    band = ('<section class="sect"><div class="wrap" style="text-align:center">'
+            '<p class="lead rv" style="max-width:78ch;margin-inline:auto">%s</p>'
+            '<div class="regions rv" style="justify-content:center;margin-top:clamp(1.2rem,2.6vw,1.8rem)">%s</div>'
+            '</div></section>') % (d["gap_lead"], rchips) + band
     body = phead_html(P, "dest", d) + """
 %s
 <section class="sect on-mist">
