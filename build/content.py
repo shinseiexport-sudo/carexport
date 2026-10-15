@@ -121,7 +121,7 @@ EN = {
         ("02", "We Purchase Auction Vehicles", "We buy suitable vehicles directly from Japanese auctions (Toyota, Nissan, Honda, Mazda, Mitsubishi, Subaru, Suzuki, Daihatsu)."),
         ("03", "Professional Dismantling", "Our experienced staff dismantle and prepare the correct engine + transmission sets, half cuts, and body parts. All items are packed safely for container export."),
       ],
-      "brands_h": "Auctions we buy from",
+      "brands_h": "Japanese Brands We Buy at Auction",
       "brands": ["Toyota", "Nissan", "Honda", "Mazda", "Mitsubishi", "Subaru", "Suzuki", "Daihatsu"],
     },
 
