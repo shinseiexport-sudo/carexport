@@ -344,6 +344,8 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
   .band__in{grid-template-columns:1fr}
 }
 @media (max-width:900px){
+  .top__photo::after{background:linear-gradient(180deg,rgba(0,40,110,.84) 0%,rgba(0,48,128,.90) 52%,rgba(0,58,155,.95) 100%)}
+  .hero,.phead{min-height:0}
   .hero__grid{grid-template-columns:1fr}
   .stamp{justify-self:start;width:150px;height:150px;margin-top:1.5rem}
   .stamp b{font-size:1.9rem}
@@ -414,13 +416,22 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
 .leaflet-control-attribution{font-size:.62rem}
 .ctry__c[hidden]{display:none}
 
-/* photo band + gallery */
-.shband{margin:0;background:var(--navy-900);line-height:0}
-.shband img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
-.shband--hero{position:relative;max-width:1440px;margin-left:auto;margin-right:auto}
-.shband--hero img{filter:contrast(1.05) saturate(1.04)}
-.shband--hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+/* photo band — one size on every page (max 1440, centred) */
+.shband{margin:0;background:var(--navy-900);line-height:0;position:relative;
+  max-width:1440px;margin-left:auto;margin-right:auto}
+.shband img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;filter:contrast(1.05) saturate(1.04)}
+.shband::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(3,14,32,.22) 0%,rgba(3,14,32,0) 32%,rgba(3,14,32,0) 58%,rgba(3,14,32,.32) 100%)}
+
+/* unified page opening — crane photo backdrop, same height on every page */
+.top__photo{position:absolute;inset:0;z-index:0;background-repeat:no-repeat;background-size:cover;background-position:center 40%;
+  filter:saturate(1.55) contrast(1.07) brightness(1.08)}
+.top__photo::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(0,52,140,.94) 0%,rgba(0,58,155,.89) 46%,rgba(0,69,181,.44) 74%,rgba(0,69,181,.16) 100%),
+             linear-gradient(180deg,rgba(0,28,78,.28) 0%,rgba(0,28,78,0) 46%,rgba(0,28,78,.30) 100%)}
+.hero,.phead{min-height:clamp(400px,52vw,620px)}
+.phead{display:flex;align-items:center}
+.phead__in{width:100%}
 .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.2vw,1rem);margin-top:clamp(1.6rem,3vw,2.4rem)}
 .shots figure{margin:0;border:1px solid var(--line);background:#fff;overflow:hidden}
 .shots img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
@@ -448,7 +459,8 @@ html[lang="ja"] .ftr__name{font-family:var(--jp);font-weight:800;letter-spacing:
 <div class="tick"><div class="tick__row"><span>大阪・日本</span><b>/</b><span>受注ベースの供給</span><b>/</b><span>エンジン／T/M／ハーフカット</span><b>/</b><span>アフリカ・中東・アジア・南米</span><b>/</b><span>オークション → 分解 → 輸出</span><b>/</b><span>大阪・日本</span><b>/</b><span>受注ベースの供給</span><b>/</b><span>エンジン／T/M／ハーフカット</span><b>/</b><span>アフリカ・中東・アジア・南米</span><b>/</b><span>オークション → 分解 → 輸出</span><b>/</b></div></div>
 
 <main>
-<section class="phead grain"><div class="phead__code">06</div>
+<section class="phead grain">
+<div class="top__photo" aria-hidden="true" style="background-image:url(../img/crane-1920.jpg)"></div><div class="phead__code">06</div>
   <div class="wrap phead__in">
     <p class="crumb"><a href="index.html">ホーム</a><i>/</i><span>選ばれる理由</span></p>
     <h1 class="h1">当社の強み</h1>

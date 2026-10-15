@@ -326,7 +326,7 @@ def tpl_top(P):
 
     pre = "" if P["code"] == "en" else "../"
     A = IMG_ALT[P["code"]]
-    band = ('<section class="shband shband--hero"><img src="%simg/hero-factory-1440.jpg" width="1440" height="810" '
+    band = ('<section class="shband"><img src="%simg/hero-factory-1440.jpg" width="1440" height="810" '
             'alt="%s" decoding="async" fetchpriority="high"></section>' % (pre, esc_attr(A["band"])))
     shots = ('<div class="shots rv">'
              '<figure><img src="%simg/engine-900.jpg" width="900" height="675" alt="%s" decoding="async"></figure>'
@@ -743,6 +743,13 @@ def build():
                 body = tpl_top(P)
             else:
                 title, desc, body = TPL[k](P)
+            photo = ('<div class="top__photo" aria-hidden="true" '
+                     'style="background-image:url(%simg/crane-1920.jpg)"></div>'
+                     % ("" if P["code"] == "en" else "../"))
+            body = body.replace('<section class="hero grain">',
+                                '<section class="hero grain">\n' + photo, 1)
+            body = body.replace('<section class="phead grain">',
+                                '<section class="phead grain">\n' + photo, 1)
             if k != "top" and k in BAND_BY_KEY:
                 _fn, _ak = BAND_BY_KEY[k]
                 _pre = "" if P["code"] == "en" else "../"
